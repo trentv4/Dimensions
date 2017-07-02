@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
+}
+
+repositories {
+    maven { url = "http://tehnut.info/maven" }
+    maven { url = "http://modmaven.k-4u.nl/" }
+}
+
+processResources
+{
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+// Below here is what you probably want to change.
+
+version = "1.0"
+group= "net.trentv.mod"
+archivesBaseName = "modname"
+
+minecraft {
+    // http://files.minecraftforge.net/
+    version = "1.12-14.21.1.2387"
+    runDir = "run"
+    
+    // http://export.mcpbot.bspk.rs/
+    mappings = "snapshot_20170624"
+    makeObfSourceJar = false
+}
+
+dependencies {
+
+}
