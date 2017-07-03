@@ -14,7 +14,7 @@ public class DimensionLibraria
 	public static int dimensionID;
 	public static WorldProvider provider;
 	public static DimensionType dimensionType;
-	
+
 	public static void register(int id, String dimName)
 	{
 		dimensionID = id;
@@ -22,44 +22,44 @@ public class DimensionLibraria
 		dimensionType = DimensionType.register(dimName, "_" + dimName, dimensionID, provider.getClass(), false);
 		DimensionManager.registerDimension(dimensionID, dimensionType);
 	}
-	
+
 	public static class WorldProviderLibraria extends WorldProvider
 	{
 		public WorldProviderLibraria()
 		{
-			
+
 		}
-		
+
 		@Override
-	    protected void init()
-	    {
+		protected void init()
+		{
 			this.biomeProvider = new BiomeProviderSingle(Biomes.SKY);
 			this.hasSkyLight = true;
 		}
-		
+
 		@Override
 		public DimensionType getDimensionType()
 		{
 			return DimensionLibraria.dimensionType;
 		}
-		
+
 		@Override
 		public boolean isSurfaceWorld()
 		{
 			return false;
 		}
-		
+
 		@Override
 		public boolean isSkyColored()
 		{
 			return false;
 		}
-		
+
 		public IChunkGenerator createChunkGenerator()
 		{
 			return new ChunkGeneratorDebug(world);
 		}
-		
+
 		@Override
 		public BiomeProvider getBiomeProvider()
 		{

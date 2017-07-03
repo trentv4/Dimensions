@@ -1,1 +1,21 @@
-itemGroup.dimensions=Dimensions
+tile.dimensions.libraria.enormousBook.name=Enormous Book
+tile.dimensions.libraria.charredBookshelf.name=Charred Bookshelf
+tile.dimensions.libraria.charredPlanks.name=Charred Planks
+tile.dimensions.libraria.smolderingBookshelf.name=Smoldering Bookshelf
+tile.dimensions.libraria.smolderingPlanks.name=Smoldering Planks
+tile.dimensions.libraria.paperPile.name=Paper Pile
+tile.dimensions.libraria.ashPile.name=Ash Pile
+tile.dimensions.libraria.marmor.name=Marmor
+tile.dimensions.libraria.marmorTile.name=Marmor Tile
+tile.dimensions.libraria.stairsMarmorTile.name=Marmor Tile Stairs
+tile.dimensions.libraria.marmorRailing.name=Marmor Railing
+tile.dimensions.libraria.marmorPillar.name=Marmor Pillar
+tile.dimensions.libraria.marmorBookshelf.name=Marmor Bookshelf
+tile.dimensions.libraria.oakRailing.name=Oak Railing
+tile.dimensions.libraria.wetPlanks.name=Wet Planks
+tile.dimensions.libraria.wetBookshelf.name=Wet Bookshelf
+tile.dimensions.libraria.soakedPlanks.name=Soaked Planks
+tile.dimensions.libraria.soakedBookshelf.name=Soaked Bookshelf
+tile.dimensions.libraria.puddle.name=Puddle
+
+itemGroup.dimensions.libraria.tab=Libraria

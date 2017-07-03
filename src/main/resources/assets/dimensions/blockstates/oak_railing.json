@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "libraria:oak_railing", "y": 90 },
+        "facing=south": { "model": "libraria:oak_railing", "y": 270 },
+        "facing=west":  { "model": "libraria:oak_railing" },
+        "facing=east":  { "model": "libraria:oak_railing", "y": 180 }
+    }
+}

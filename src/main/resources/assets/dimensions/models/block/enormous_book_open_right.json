@@ -1,0 +1,23 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "particle": "libraria:blocks/enormous_book_pages_side",
+        "down": "libraria:blocks/enormous_book_back",
+        "up": "libraria:blocks/enormous_book_page_front",
+        "north": "libraria:blocks/enormous_book_open_pages_top",
+        "east": "libraria:blocks/enormous_book_pages_side",
+        "south": "libraria:blocks/enormous_book_open_pages_bottom"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 8, 16 ],
+            "faces": {
+                "down":  { "rotation": 180, "texture": "#down", "cullface": "down" },
+                "up":    { "texture": "#up" },
+                "north": { "texture": "#north", "cullface": "north" },
+                "south": { "texture": "#south", "cullface": "south" },
+                "east":  { "texture": "#east", "cullface": "east" }
+            }
+        }
+    ]
+}

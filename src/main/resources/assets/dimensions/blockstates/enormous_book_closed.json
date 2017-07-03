@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "libraria:enormous_book_closed" },
+        "facing=south": { "model": "libraria:enormous_book_closed", "y": 180 },
+        "facing=west":  { "model": "libraria:enormous_book_closed", "y": 270 },
+        "facing=east":  { "model": "libraria:enormous_book_closed", "y": 90 }
+    }
+}

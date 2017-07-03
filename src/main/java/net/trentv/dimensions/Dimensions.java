@@ -34,7 +34,7 @@ public class Dimensions
 		logger = event.getModLog();
 
 		DimensionsObjects.init();
-		
+
 		DimensionLibraria.register(200, "libraria");
 
 		proxy.registerRenderers();

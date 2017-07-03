@@ -1,0 +1,7 @@
+{
+    "parent": "libraria:block/railing",
+    "textures": {
+        "railing": "blocks/log_oak",
+        "panel": "blocks/planks_oak"
+    }
+}

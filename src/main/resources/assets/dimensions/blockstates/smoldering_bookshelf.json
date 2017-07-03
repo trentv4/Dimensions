@@ -1,0 +1,16 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "normal": {
+            "model": "forge:multi-layer",
+            "custom": {
+                "base": "libraria:charred_bookshelf#normal",
+                "Solid": "libraria:charred_bookshelf#normal",
+                "Cutout": "libraria:smoldering_bookshelf#glow"
+            }
+        },
+        "glow": {
+            "model": "libraria:charred_bookshelf_glow"
+        }
+    }
+}

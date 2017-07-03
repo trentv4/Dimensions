@@ -1,0 +1,7 @@
+{
+    "parent": "libraria:block/railing",
+    "textures": {
+        "railing": "libraria:blocks/marmor",
+        "panel": "libraria:blocks/marmor_tile"
+    }
+}

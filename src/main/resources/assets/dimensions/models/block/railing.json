@@ -1,0 +1,48 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "particle": "#panel"
+    },
+    "elements": [
+        {   "from": [ 0, 14, 0 ],
+            "to": [ 4, 16, 16 ],
+            "faces": {
+                "down":  { "texture": "#railing" },
+                "up":    { "texture": "#railing", "cullface": "up" },
+                "north": { "texture": "#railing" },
+                "south": { "texture": "#railing" },
+                "west":  { "texture": "#railing", "cullface": "west" },
+                "east":  { "texture": "#railing" }
+            }
+        },
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 4, 14, 2 ],
+            "faces": {
+                "down":  { "texture": "#railing", "cullface": "down" },
+                "up":    { "texture": "#railing", "cullface": "up" },
+                "north": { "texture": "#railing", "cullface": "north" },
+                "south": { "texture": "#railing" },
+                "west":  { "texture": "#railing", "cullface": "west" },
+                "east":  { "texture": "#railing" }
+            }
+        },
+        {   "from": [ 0, 0, 14 ],
+            "to": [ 4, 14, 16 ],
+            "faces": {
+                "down":  { "texture": "#railing", "cullface": "down" },
+                "up":    { "texture": "#railing", "cullface": "up" },
+                "north": { "texture": "#railing" },
+                "south": { "texture": "#railing", "cullface": "south" },
+                "west":  { "texture": "#railing", "cullface": "west" },
+                "east":  { "texture": "#railing" }
+            }
+        },
+        {   "from": [ 1, 0, 2 ],
+            "to": [ 3, 14, 14 ],
+            "faces": {
+                "west": { "texture": "#panel" },
+                "east": { "texture": "#panel" }
+            }
+        }
+    ]
+}

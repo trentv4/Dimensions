@@ -1,0 +1,6 @@
+{
+    "parent": "libraria:block/pile",
+    "textures": {
+        "up": "libraria:blocks/puddle"
+    }
+}

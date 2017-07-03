@@ -1,0 +1,38 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "libraria:marmor_tile" },
+            { "model": "libraria:marmor_tile", "x": 90 },
+            { "model": "libraria:marmor_tile", "x": 180 },
+            { "model": "libraria:marmor_tile", "x": 270 },
+            { "model": "libraria:marmor_tile", "y": 90 },
+            { "model": "libraria:marmor_tile", "y": 90, "x": 90 },
+            { "model": "libraria:marmor_tile", "y": 90, "x": 180 },
+            { "model": "libraria:marmor_tile", "y": 90, "x": 270 },
+            { "model": "libraria:marmor_tile", "y": 180 },
+            { "model": "libraria:marmor_tile", "y": 180, "x": 90 },
+            { "model": "libraria:marmor_tile", "y": 180, "x": 180 },
+            { "model": "libraria:marmor_tile", "y": 180, "x": 270 },
+            { "model": "libraria:marmor_tile", "y": 270 },
+            { "model": "libraria:marmor_tile", "y": 270, "x": 90 },
+            { "model": "libraria:marmor_tile", "y": 270, "x": 180 },
+            { "model": "libraria:marmor_tile", "y": 270, "x": 270 },
+            { "model": "libraria:marmor_tile_mirrored" },
+            { "model": "libraria:marmor_tile_mirrored", "x": 90 },
+            { "model": "libraria:marmor_tile_mirrored", "x": 180 },
+            { "model": "libraria:marmor_tile_mirrored", "x": 270 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 90 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 90, "x": 90 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 90, "x": 180 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 90, "x": 270 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 180 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 180, "x": 90 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 180, "x": 180 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 180, "x": 270 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 270 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 270, "x": 90 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 270, "x": 180 },
+            { "model": "libraria:marmor_tile_mirrored", "y": 270, "x": 270 }
+        ]
+    }
+}
