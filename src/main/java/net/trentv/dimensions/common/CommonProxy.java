@@ -6,5 +6,7 @@ public abstract class CommonProxy
 {
 	public abstract void registerRenderers();
 
-	public void registerEventHandlers() {}
+	public void registerEventHandlers()
+	{
+	}
 }

@@ -8,7 +8,7 @@ public class DimensionsObjects
 {
 	public static void init()
 	{
-		
+
 	}
 
 	private static void registerBlock(Block in)
