@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.trentv.dimensions.common.CommonProxy;
 import net.trentv.dimensions.common.DimensionsObjects;
+import net.trentv.dimensions.common.dimensions.DimensionLibraria;
 
 @Mod(modid = Dimensions.MODID, version = Dimensions.VERSION, acceptedMinecraftVersions = "1.12")
 public class Dimensions
@@ -20,7 +21,7 @@ public class Dimensions
 	public static final String MODID = "dimensions";
 	public static final String VERSION = "1.0.0";
 
-	public static final DimensionsCreativeTab CREATIVE_TAB = new DimensionsCreativeTab("dimensions");
+	public static final DimensionsLibrariaCreativeTab CREATIVE_TAB = new DimensionsLibrariaCreativeTab("dimensions.libraria");
 
 	public static Logger logger;
 
@@ -33,6 +34,8 @@ public class Dimensions
 		logger = event.getModLog();
 
 		DimensionsObjects.init();
+		
+		DimensionLibraria.register(200, "libraria");
 
 		proxy.registerRenderers();
 		proxy.registerEventHandlers();
@@ -50,9 +53,9 @@ public class Dimensions
 		logger.info("Dimensions initialized");
 	}
 
-	private static class DimensionsCreativeTab extends CreativeTabs
+	private static class DimensionsLibrariaCreativeTab extends CreativeTabs
 	{
-		public DimensionsCreativeTab(String label)
+		public DimensionsLibrariaCreativeTab(String label)
 		{
 			super(label);
 		}
