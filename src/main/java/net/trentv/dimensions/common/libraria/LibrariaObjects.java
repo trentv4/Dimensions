@@ -14,7 +14,7 @@ import net.trentv.dimensions.common.libraria.block.BlockModStairs;
 import net.trentv.dimensions.common.libraria.block.BlockParticleDripper;
 import net.trentv.dimensions.common.libraria.block.BlockPile;
 import net.trentv.dimensions.common.libraria.block.BlockPileTranslucent;
-import net.trentv.dimensions.common.libraria.block.BlockSmouldering;
+import net.trentv.dimensions.common.libraria.block.BlockSmoldering;
 
 public class LibrariaObjects
 {
@@ -22,18 +22,19 @@ public class LibrariaObjects
 
 	public static final Block MARMOR = new Block(Material.ROCK).setUnlocalizedName("randomdimensions.marmor").setRegistryName(Dimensions.MODID, "marmor").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block MARMOR_TILE = new Block(Material.ROCK).setUnlocalizedName("randomdimensions.marmor_tile").setRegistryName(Dimensions.MODID, "marmor_tile").setCreativeTab(LIBRARIA_CREATIVE_TAB);
-	public static final Block MARMOR_TILE_STAIRS = new BlockModStairs(MARMOR_TILE.getDefaultState()).setUnlocalizedName("randomdimensions.marmor_tile_stairs").setRegistryName(Dimensions.MODID, "marmor_tile_stairs").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block MARMOR_PILLAR = new BlockModRotatedPillar(Material.ROCK).setUnlocalizedName("randomdimensions.marmor_pillar").setRegistryName(Dimensions.MODID, "marmor_pillar").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block MARMOR_BOOKSHELF = new BlockMarmorBookshelf(Material.ROCK).setUnlocalizedName("randomdimensions.marmor_bookshelf").setRegistryName(Dimensions.MODID, "marmor_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
+	public static final Block MARMOR_TILE_STAIRS = new BlockModStairs(MARMOR_TILE.getDefaultState()).setUnlocalizedName("randomdimensions.marmor_tile_stairs").setRegistryName(Dimensions.MODID, "marmor_tile_stairs").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+
 	public static final Block CHARRED_PLANKS = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.charred_planks").setRegistryName(Dimensions.MODID, "charred_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block CHARRED_BOOKSHELF = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.charred_bookshelf").setRegistryName(Dimensions.MODID, "charred_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
-	public static final Block SMOLDERING_PLANKS = new BlockSmouldering(Material.WOOD, EnumParticleTypes.BLOCK_DUST, 60).setUnlocalizedName("randomdimensions.smoldering_planks").setRegistryName(Dimensions.MODID, "smoldering_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
-	public static final Block SMOLDERING_BOOKSHELF = new BlockSmouldering(Material.WOOD, EnumParticleTypes.BLOCK_DUST, 60).setUnlocalizedName("randomdimensions.smoldering_bookshelf").setRegistryName(Dimensions.MODID, "smoldering_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+	public static final Block SMOLDERING_PLANKS = new BlockSmoldering(Material.WOOD, EnumParticleTypes.BLOCK_DUST, 60, Block.getStateId(CHARRED_PLANKS.getDefaultState())).setUnlocalizedName("randomdimensions.smoldering_planks").setRegistryName(Dimensions.MODID, "smoldering_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+	public static final Block SMOLDERING_BOOKSHELF = new BlockSmoldering(Material.WOOD, EnumParticleTypes.BLOCK_DUST, 60, Block.getStateId(CHARRED_PLANKS.getDefaultState())).setUnlocalizedName("randomdimensions.smoldering_bookshelf").setRegistryName(Dimensions.MODID, "smoldering_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
 	public static final Block WET_PLANKS = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.wet_planks").setRegistryName(Dimensions.MODID, "wet_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block WET_BOOKSHELF = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.wet_bookshelf").setRegistryName(Dimensions.MODID, "wet_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
-	public static final Block SOAKED_PLANKS = new BlockParticleDripper(Material.WOOD, EnumParticleTypes.DRIP_WATER, 40).setUnlocalizedName("randomdimensions.soaked_bookshelf").setRegistryName(Dimensions.MODID, "soaked_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+	public static final Block SOAKED_PLANKS = new BlockParticleDripper(Material.WOOD, EnumParticleTypes.DRIP_WATER, 40).setUnlocalizedName("randomdimensions.soaked_planks").setRegistryName(Dimensions.MODID, "soaked_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block SOAKED_BOOKSHELF = new BlockParticleDripper(Material.WOOD, EnumParticleTypes.DRIP_WATER, 40).setUnlocalizedName("randomdimensions.soaked_bookshelf").setRegistryName(Dimensions.MODID, "soaked_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
 	public static final Block PAPER_PILE = new BlockPile().setUnlocalizedName("randomdimensions.paper_pile").setRegistryName(Dimensions.MODID, "paper_pile").setCreativeTab(LIBRARIA_CREATIVE_TAB);

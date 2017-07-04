@@ -6,6 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumFacing.Axis;
+import net.minecraft.util.EnumFacing.AxisDirection;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -15,14 +17,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockParticleDripper extends Block
 {
-	private int randomDelay;
-	private EnumParticleTypes particle;
+	public final int randomDelay;
+	public final EnumParticleTypes particle;
+	public final int[] particleParams;
 
-	public BlockParticleDripper(Material materialIn, EnumParticleTypes particle, int randomDelay)
+	public BlockParticleDripper(Material materialIn, EnumParticleTypes particle, int randomDelay, int... particleParams)
 	{
 		super(materialIn);
 		this.randomDelay = randomDelay;
 		this.particle = particle;
+		this.particleParams = particleParams;
 	}
 
 	@Override
@@ -46,35 +50,26 @@ public class BlockParticleDripper extends Block
 		Vec3d newPos = new Vec3d(pos).add(new Vec3d(0.05, -0.1, 0.0));
 		Vec3d faceVec = new Vec3d(facing.getDirectionVec());
 
-		if (faceVec.y == -1)
+		for (Axis axis : EnumFacing.Axis.values())
 		{
-			newPos = newPos.add(new Vec3d(random.nextDouble(), 0, random.nextDouble()));
+			Vec3d unit = new Vec3d(EnumFacing.getFacingFromAxis(AxisDirection.POSITIVE, axis).getDirectionVec());
+			if (axis != facing.getAxis())
+			{
+				newPos = newPos.add(unit.scale(random.nextDouble()));
+			}
+			else
+			{
+				if (facing.getAxisDirection() == AxisDirection.POSITIVE)
+				{
+					newPos = newPos.add(unit.scale(1.15));
+				}
+				else
+				{
+					newPos = newPos.add(unit.scale(-0.15));
+				}
+			}
 		}
-		else
-		{
-			double newX = 0;
-			double newZ = 0;
-			if (faceVec.x == -1)
-			{
-				newX++;
-				newZ = random.nextDouble();
-			}
-			else if (faceVec.x == 1)
-			{
-				newZ = random.nextDouble();
-			}
-			if (faceVec.z == -1)
-			{
-				newZ++;
-				newX = random.nextDouble();
-			}
-			else if (faceVec.z == 1)
-			{
-				newX = random.nextDouble();
-			}
-			newPos = newPos.add(new Vec3d(newX, random.nextDouble(), newZ).scale(1.1));
-		}
-		// Probably a cleaner way to do this. Almost certainly is. I don't care.
-		world.spawnParticle(particle, newPos.x, newPos.y, newPos.z, 0, 0, 0);
+
+		world.spawnParticle(particle, newPos.x, newPos.y, newPos.z, 0, 0, 0, particleParams);
 	}
 }
