@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "randomdimensions:blocks/wet_planks",
+        "side": "randomdimensions:blocks/wet_bookshelf"
+    }
+}

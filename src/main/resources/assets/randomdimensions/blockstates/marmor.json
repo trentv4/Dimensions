@@ -1,0 +1,38 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "randomdimensions:marmor" },
+            { "model": "randomdimensions:marmor", "x": 90 },
+            { "model": "randomdimensions:marmor", "x": 180 },
+            { "model": "randomdimensions:marmor", "x": 270 },
+            { "model": "randomdimensions:marmor", "y": 90 },
+            { "model": "randomdimensions:marmor", "y": 90, "x": 90 },
+            { "model": "randomdimensions:marmor", "y": 90, "x": 180 },
+            { "model": "randomdimensions:marmor", "y": 90, "x": 270 },
+            { "model": "randomdimensions:marmor", "y": 180 },
+            { "model": "randomdimensions:marmor", "y": 180, "x": 90 },
+            { "model": "randomdimensions:marmor", "y": 180, "x": 180 },
+            { "model": "randomdimensions:marmor", "y": 180, "x": 270 },
+            { "model": "randomdimensions:marmor", "y": 270 },
+            { "model": "randomdimensions:marmor", "y": 270, "x": 90 },
+            { "model": "randomdimensions:marmor", "y": 270, "x": 180 },
+            { "model": "randomdimensions:marmor", "y": 270, "x": 270 },
+            { "model": "randomdimensions:marmor_mirrored" },
+            { "model": "randomdimensions:marmor_mirrored", "x": 90 },
+            { "model": "randomdimensions:marmor_mirrored", "x": 180 },
+            { "model": "randomdimensions:marmor_mirrored", "x": 270 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 90 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 90, "x": 90 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 90, "x": 180 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 90, "x": 270 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 180 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 180, "x": 90 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 180, "x": 180 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 180, "x": 270 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 270 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 270, "x": 90 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 270, "x": 180 },
+            { "model": "randomdimensions:marmor_mirrored", "y": 270, "x": 270 }
+        ]
+    }
+}

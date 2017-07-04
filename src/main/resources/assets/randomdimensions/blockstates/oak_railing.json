@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "randomdimensions:oak_railing", "y": 90 },
+        "facing=south": { "model": "randomdimensions:oak_railing", "y": 270 },
+        "facing=west":  { "model": "randomdimensions:oak_railing" },
+        "facing=east":  { "model": "randomdimensions:oak_railing", "y": 180 }
+    }
+}

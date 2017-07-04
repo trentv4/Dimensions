@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "randomdimensions:blocks/soaked_planks",
+        "side": "randomdimensions:blocks/soaked_bookshelf"
+    }
+}

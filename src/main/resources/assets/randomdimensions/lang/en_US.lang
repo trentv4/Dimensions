@@ -1,0 +1,21 @@
+tile.randomdimensions.enormousBook.name=Enormous Book
+tile.randomdimensions.charredBookshelf.name=Charred Bookshelf
+tile.randomdimensions.charredPlanks.name=Charred Planks
+tile.randomdimensions.smolderingBookshelf.name=Smoldering Bookshelf
+tile.randomdimensions.smolderingPlanks.name=Smoldering Planks
+tile.randomdimensions.paperPile.name=Paper Pile
+tile.randomdimensions.ashPile.name=Ash Pile
+tile.randomdimensions.marmor.name=Marmor
+tile.randomdimensions.marmorTile.name=Marmor Tile
+tile.randomdimensions.stairsMarmorTile.name=Marmor Tile Stairs
+tile.randomdimensions.marmorRailing.name=Marmor Railing
+tile.randomdimensions.marmorPillar.name=Marmor Pillar
+tile.randomdimensions.marmorBookshelf.name=Marmor Bookshelf
+tile.randomdimensions.oakRailing.name=Oak Railing
+tile.randomdimensions.wetPlanks.name=Wet Planks
+tile.randomdimensions.wetBookshelf.name=Wet Bookshelf
+tile.randomdimensions.soakedPlanks.name=Soaked Planks
+tile.randomdimensions.soakedBookshelf.name=Soaked Bookshelf
+tile.randomdimensions.puddle.name=Puddle
+
+itemGroup.randomdimensions.libraria.tab=Random Dimensions: Libraria

@@ -1,0 +1,16 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "normal": {
+            "model": "forge:multi-layer",
+            "custom": {
+                "base": "randomdimensions:charred_planks#normal",
+                "Solid": "randomdimensions:charred_planks#normal",
+                "Cutout": "randomdimensions:smoldering_planks#glow"
+            }
+        },
+        "glow": {
+            "model": "randomdimensions:charred_planks_glow"
+        }
+    }
+}

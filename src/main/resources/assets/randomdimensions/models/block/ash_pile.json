@@ -1,0 +1,6 @@
+{
+    "parent": "randomdimensions:block/pile",
+    "textures": {
+        "up": "randomdimensions:blocks/ash_pile"
+    }
+}

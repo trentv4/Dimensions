@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": { "model": "libraria:marmor_railing", "y": 90 },
-        "facing=south": { "model": "libraria:marmor_railing", "y": 270 },
-        "facing=west":  { "model": "libraria:marmor_railing" },
-        "facing=east":  { "model": "libraria:marmor_railing", "y": 180 }
-    }
-}

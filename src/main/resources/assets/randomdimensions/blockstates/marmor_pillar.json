@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y": { "model": "randomdimensions:marmor_pillar_top" },
+        "axis=z": { "model": "randomdimensions:marmor_pillar_top", "x": 90 },
+        "axis=x": { "model": "randomdimensions:marmor_pillar_top", "x": 90, "y": 90 }
+    }
+}

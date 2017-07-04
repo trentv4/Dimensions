@@ -1,7 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "libraria:blocks/charred_planks_glow",
-        "side": "libraria:blocks/charred_bookshelf_glow"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "libraria:blocks/marmor_tile_stairs",
-        "top": "libraria:blocks/marmor_tile_stairs",
-        "side": "libraria:blocks/marmor_tile_stairs"
-    }
-}

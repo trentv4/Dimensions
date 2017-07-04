@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "randomdimensions:puddle" },
+            { "model": "randomdimensions:puddle", "y": 90 },
+            { "model": "randomdimensions:puddle", "y": 180 },
+            { "model": "randomdimensions:puddle", "y": 270 }
+        ]
+    }
+}
