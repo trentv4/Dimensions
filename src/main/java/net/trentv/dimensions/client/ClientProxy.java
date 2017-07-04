@@ -1,6 +1,5 @@
 package net.trentv.dimensions.client;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -16,6 +15,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerEventHandlers()
 	{
+		super.registerEventHandlers();
 		MinecraftForge.EVENT_BUS.register(new ClientEvents());
 	}
 
@@ -28,9 +28,9 @@ public class ClientProxy extends CommonProxy
 			{
 				ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 			}
-			for (Block block : DimensionsObjects.blocks)
+			for (ItemBlock block : DimensionsObjects.itemBlocks)
 			{
-				ModelLoader.setCustomModelResourceLocation(ItemBlock.REGISTRY.getObject(block.getRegistryName()), 0, new ModelResourceLocation((block.getRegistryName()), "inventory"));
+				ModelLoader.setCustomModelResourceLocation(block, 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 			}
 		}
 	}

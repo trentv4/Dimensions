@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.trentv.dimensions.common.libraria.LibrariaObjects;
 
 public class DimensionsObjects
 {
 	public static ArrayList<Block> blocks = new ArrayList<Block>();
 	public static ArrayList<Item> items = new ArrayList<Item>();
+	public static ArrayList<ItemBlock> itemBlocks = new ArrayList<ItemBlock>();
 
 	public static void init()
 	{
@@ -21,6 +23,9 @@ public class DimensionsObjects
 		for (Block in : toRegister)
 		{
 			blocks.add(in);
+			ItemBlock a = new ItemBlock(in);
+			a.setRegistryName(in.getRegistryName());
+			itemBlocks.add(a);
 		}
 	}
 

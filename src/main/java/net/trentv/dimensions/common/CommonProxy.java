@@ -32,11 +32,9 @@ public abstract class CommonProxy
 			{
 				event.getRegistry().register(item);
 			}
-			for (Block block : DimensionsObjects.blocks)
+			for (ItemBlock itemBlock : DimensionsObjects.itemBlocks)
 			{
-				ItemBlock a = new ItemBlock(block);
-				a.setRegistryName(block.getRegistryName());
-				event.getRegistry().register(a);
+				event.getRegistry().register(itemBlock);
 			}
 		}
 	}

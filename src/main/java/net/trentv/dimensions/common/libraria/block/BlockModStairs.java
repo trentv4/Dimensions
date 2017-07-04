@@ -9,5 +9,6 @@ public class BlockModStairs extends BlockStairs
 	public BlockModStairs(IBlockState modelState)
 	{
 		super(modelState);
+		this.useNeighborBrightness = true;
 	}
 }
