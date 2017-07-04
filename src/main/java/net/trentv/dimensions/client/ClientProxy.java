@@ -13,15 +13,15 @@ public class ClientProxy extends CommonProxy
 {
 	public static ArrayList<Block> toBlockModels = new ArrayList<Block>();
 	public static ArrayList<Item> toItemModels = new ArrayList<Item>();
-	
+
 	@Override
 	public void registerRenderers()
 	{
-		for(Block block : toBlockModels)
+		for (Block block : toBlockModels)
 		{
 			setBlockModel(block);
 		}
-		for(Item item : toItemModels)
+		for (Item item : toItemModels)
 		{
 			setItemModel(item);
 		}

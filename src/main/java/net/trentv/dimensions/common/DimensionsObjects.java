@@ -13,19 +13,25 @@ public class DimensionsObjects
 	{
 		LibrariaObjects.init();
 	}
-	
-	public static void registerBlock(Block in)
+
+	public static void registerBlock(Block... toRegister)
 	{
-		ItemBlock a = new ItemBlock(in);
-		a.setRegistryName(in.getRegistryName());
-		ForgeRegistries.BLOCKS.register(in);
-		ForgeRegistries.ITEMS.register(a);
-		ClientProxy.toBlockModels.add(in);
+		for (Block in : toRegister)
+		{
+			ItemBlock a = new ItemBlock(in);
+			a.setRegistryName(in.getRegistryName());
+			ForgeRegistries.BLOCKS.register(in);
+			ForgeRegistries.ITEMS.register(a);
+			ClientProxy.toBlockModels.add(in);
+		}
 	}
-	
-	public static void registerItem(Item in)
+
+	public static void registerItem(Item... toRegister)
 	{
-		ForgeRegistries.ITEMS.register(in);
-		ClientProxy.toItemModels.add(in);
+		for (Item in : toRegister)
+		{
+			ForgeRegistries.ITEMS.register(in);
+			ClientProxy.toItemModels.add(in);
+		}
 	}
 }
