@@ -18,4 +18,4 @@ tile.randomdimensions.soaked_planks.name=Soaked Planks
 tile.randomdimensions.soaked_bookshelf.name=Soaked Bookshelf
 tile.randomdimensions.puddle.name=Puddle
 
-itemGroup.randomdimensions.libraria.tab=Random Dimensions: Libraria
+itemGroup.randomdimensions.libraria=Random Dimensions: Libraria
