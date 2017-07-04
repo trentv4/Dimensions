@@ -1,14 +1,16 @@
 package net.trentv.dimensions.common;
 
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.trentv.dimensions.client.ClientProxy;
 import net.trentv.dimensions.common.libraria.LibrariaObjects;
 
 public class DimensionsObjects
 {
+	public static ArrayList<Block> blocks = new ArrayList<Block>();
+	public static ArrayList<Item> items = new ArrayList<Item>();
+
 	public static void init()
 	{
 		LibrariaObjects.init();
@@ -18,11 +20,7 @@ public class DimensionsObjects
 	{
 		for (Block in : toRegister)
 		{
-			ItemBlock a = new ItemBlock(in);
-			a.setRegistryName(in.getRegistryName());
-			ForgeRegistries.BLOCKS.register(in);
-			ForgeRegistries.ITEMS.register(a);
-			ClientProxy.toBlockModels.add(in);
+			blocks.add(in);
 		}
 	}
 
@@ -30,8 +28,7 @@ public class DimensionsObjects
 	{
 		for (Item in : toRegister)
 		{
-			ForgeRegistries.ITEMS.register(in);
-			ClientProxy.toItemModels.add(in);
+			items.add(in);
 		}
 	}
 }
