@@ -1,21 +1,31 @@
 package net.trentv.dimensions.common;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.trentv.dimensions.client.ClientProxy;
+import net.trentv.dimensions.common.libraria.LibrariaObjects;
 
 public class DimensionsObjects
 {
 	public static void init()
 	{
-
+		LibrariaObjects.init();
 	}
-
-	private static void registerBlock(Block in)
+	
+	public static void registerBlock(Block in)
 	{
 		ItemBlock a = new ItemBlock(in);
 		a.setRegistryName(in.getRegistryName());
 		ForgeRegistries.BLOCKS.register(in);
 		ForgeRegistries.ITEMS.register(a);
+		ClientProxy.toBlockModels.add(in);
+	}
+	
+	public static void registerItem(Item in)
+	{
+		ForgeRegistries.ITEMS.register(in);
+		ClientProxy.toItemModels.add(in);
 	}
 }

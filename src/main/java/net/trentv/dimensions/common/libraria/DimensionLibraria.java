@@ -1,4 +1,4 @@
-package net.trentv.dimensions.common.dimensions;
+package net.trentv.dimensions.common.libraria;
 
 import net.minecraft.init.Biomes;
 import net.minecraft.world.DimensionType;
