@@ -5,11 +5,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
 import net.trentv.dimensions.Dimensions;
 import net.trentv.dimensions.common.DimensionsObjects;
 import net.trentv.dimensions.common.libraria.block.BlockMarmorBookshelf;
 import net.trentv.dimensions.common.libraria.block.BlockModRotatedPillar;
 import net.trentv.dimensions.common.libraria.block.BlockModStairs;
+import net.trentv.dimensions.common.libraria.block.BlockParticleDripper;
 import net.trentv.dimensions.common.libraria.block.BlockPile;
 import net.trentv.dimensions.common.libraria.block.BlockPileTranslucent;
 import net.trentv.dimensions.common.libraria.block.BlockSmouldering;
@@ -26,20 +28,23 @@ public class LibrariaObjects
 
 	public static final Block CHARRED_PLANKS = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.charred_planks").setRegistryName(Dimensions.MODID, "charred_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block CHARRED_BOOKSHELF = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.charred_bookshelf").setRegistryName(Dimensions.MODID, "charred_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
-	public static final Block SMOLDERING_PLANKS = new BlockSmouldering().setUnlocalizedName("randomdimensions.smoldering_planks").setRegistryName(Dimensions.MODID, "smoldering_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
-	public static final Block SMOLDERING_BOOKSHELF = new BlockSmouldering().setUnlocalizedName("randomdimensions.smoldering_bookshelf").setRegistryName(Dimensions.MODID, "smoldering_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+	public static final Block SMOLDERING_PLANKS = new BlockSmouldering(Material.WOOD, EnumParticleTypes.BLOCK_DUST, 60).setUnlocalizedName("randomdimensions.smoldering_planks").setRegistryName(Dimensions.MODID, "smoldering_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+	public static final Block SMOLDERING_BOOKSHELF = new BlockSmouldering(Material.WOOD, EnumParticleTypes.BLOCK_DUST, 60).setUnlocalizedName("randomdimensions.smoldering_bookshelf").setRegistryName(Dimensions.MODID, "smoldering_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
 	public static final Block WET_PLANKS = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.wet_planks").setRegistryName(Dimensions.MODID, "wet_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block WET_BOOKSHELF = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.wet_bookshelf").setRegistryName(Dimensions.MODID, "wet_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+	public static final Block SOAKED_PLANKS = new BlockParticleDripper(Material.WOOD, EnumParticleTypes.DRIP_WATER, 40).setUnlocalizedName("randomdimensions.soaked_bookshelf").setRegistryName(Dimensions.MODID, "soaked_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+	public static final Block SOAKED_BOOKSHELF = new BlockParticleDripper(Material.WOOD, EnumParticleTypes.DRIP_WATER, 40).setUnlocalizedName("randomdimensions.soaked_bookshelf").setRegistryName(Dimensions.MODID, "soaked_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
 	public static final Block PAPER_PILE = new BlockPile().setUnlocalizedName("randomdimensions.paper_pile").setRegistryName(Dimensions.MODID, "paper_pile").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block ASH_PILE = new BlockPile().setUnlocalizedName("randomdimensions.ash_pile").setRegistryName(Dimensions.MODID, "ash_pile").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block PUDDLE = new BlockPileTranslucent().setUnlocalizedName("randomdimensions.puddle").setRegistryName(Dimensions.MODID, "puddle").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
-	public static void init()
+	public static void init()// BLOCK_DUST AOIJFDSOIA
 	{
-		DimensionsObjects.registerBlock(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR);
+		DimensionsObjects.registerBlock(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR, MARMOR_BOOKSHELF);
 		DimensionsObjects.registerBlock(CHARRED_PLANKS, CHARRED_BOOKSHELF, SMOLDERING_PLANKS, SMOLDERING_BOOKSHELF);
+		DimensionsObjects.registerBlock(WET_PLANKS, WET_BOOKSHELF, SOAKED_PLANKS, SOAKED_BOOKSHELF);
 		DimensionsObjects.registerBlock(PAPER_PILE, ASH_PILE, PUDDLE);
 	}
 
