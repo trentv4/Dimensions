@@ -1,5 +1,7 @@
 package net.trentv.dimensions.client;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -7,6 +9,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.trentv.dimensions.common.CommonProxy;
 import net.trentv.dimensions.common.DimensionsObjects;
 
@@ -21,6 +24,16 @@ public class ClientProxy extends CommonProxy
 
 	public static class ClientEvents
 	{
+		@SubscribeEvent
+		public void onClientTick(ClientTickEvent event)
+		{
+			EntityPlayerSP player = Minecraft.getMinecraft().player;
+			if (player != null)
+			{
+
+			}
+		}
+
 		@SubscribeEvent
 		public void registerModels(ModelRegistryEvent event)
 		{

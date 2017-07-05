@@ -20,6 +20,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -268,13 +269,21 @@ public class BlockEnormousBook extends BlockHorizontal
 					if(playerList != null)
 					{
 						TeleporterLibraria teleporter = new TeleporterLibraria((WorldServer) world);
-						AxisAlignedBB boundingBox = new AxisAlignedBB(pos, otherPos).expand(0, 0.5, 0).offset(0, 1.0, 0);
+						AxisAlignedBB boundingBox = new AxisAlignedBB(pos, otherPos).expand(0.5, 0.5, 0.5).offset(0, 0.5, 0);
 						
 						world.getEntitiesInAABBexcluding(null, boundingBox, EntitySelectors.IS_ALIVE).forEach(it -> {
 							it.setPortal(pos);
 							if (it instanceof EntityPlayerMP)
 							{
-								playerList.transferPlayerToDimension((EntityPlayerMP) it, DimensionLibraria.dimensionID, teleporter);
+								EntityPlayerMP teleportee = (EntityPlayerMP) it;
+								if (teleportee.dimension == DimensionLibraria.dimensionID)
+								{
+									playerList.transferPlayerToDimension((EntityPlayerMP) it, DimensionType.OVERWORLD.getId(), teleporter);
+								}
+								else
+								{
+									playerList.transferPlayerToDimension((EntityPlayerMP) it, DimensionLibraria.dimensionID, teleporter);
+								}
 							}
 						});
 					}
