@@ -179,13 +179,13 @@ public class BlockEnormousBook extends BlockHorizontal
 		@Override
 		public IBlockState getStateFromMeta(int meta)
 		{
-			return getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 3)).withProperty(SIDE, EnumHorizontalRelativeFacing.getFacing((meta << 2) & 1));
+			return getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 3)).withProperty(SIDE, EnumHorizontalRelativeFacing.getFacing((meta >> 2) & 1));
 		}
 
 		@Override
 		public int getMetaFromState(IBlockState state)
 		{
-			return state.getValue(FACING).getHorizontalIndex() | state.getValue(SIDE).ordinal() << 2;
+			return state.getValue(FACING).getHorizontalIndex() | (state.getValue(SIDE).ordinal() << 2);
 		}
 
 		@Override
