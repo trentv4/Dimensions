@@ -1,8 +1,11 @@
 package net.trentv.dimensions.common.libraria;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.DimensionType;
+import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.gen.ChunkGeneratorDebug;
@@ -55,6 +58,7 @@ public class DimensionLibraria
 			return false;
 		}
 
+		@Override
 		public IChunkGenerator createChunkGenerator()
 		{
 			return new ChunkGeneratorDebug(world);
@@ -64,6 +68,20 @@ public class DimensionLibraria
 		public BiomeProvider getBiomeProvider()
 		{
 			return biomeProvider;
+		}
+	}
+
+	public static class TeleporterLibraria extends Teleporter
+	{
+		public TeleporterLibraria(WorldServer world)
+		{
+			super(world);
+		}
+
+		@Override
+		public boolean makePortal(Entity entity)
+		{
+			return true;
 		}
 	}
 }
