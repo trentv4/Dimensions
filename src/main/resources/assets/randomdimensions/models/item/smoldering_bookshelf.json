@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "randomdimensions:blocks/smoldering_planks",
+        "side": "randomdimensions:blocks/smoldering_bookshelf"
+    }
+}
