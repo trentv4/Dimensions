@@ -3,9 +3,11 @@ package net.trentv.dimensions.common;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.trentv.dimensions.common.libraria.DimensionLibraria;
 
 public abstract class CommonProxy
 {
@@ -23,6 +25,12 @@ public abstract class CommonProxy
 			{
 				event.getRegistry().register(block);
 			}
+		}
+
+		@SubscribeEvent
+		public void registerBiomes(RegistryEvent.Register<Biome> event)
+		{
+			event.getRegistry().register(DimensionLibraria.BIOME_LIBRARIA);
 		}
 
 		@SubscribeEvent
