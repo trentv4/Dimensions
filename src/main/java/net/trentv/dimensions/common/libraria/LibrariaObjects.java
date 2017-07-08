@@ -16,6 +16,7 @@ import net.trentv.dimensions.common.libraria.block.BlockModStairs;
 import net.trentv.dimensions.common.libraria.block.BlockParticleDripper;
 import net.trentv.dimensions.common.libraria.block.BlockPile;
 import net.trentv.dimensions.common.libraria.block.BlockPileTranslucent;
+import net.trentv.dimensions.common.libraria.block.BlockRailing;
 import net.trentv.dimensions.common.libraria.block.BlockSmoldering;
 
 public class LibrariaObjects
@@ -30,6 +31,9 @@ public class LibrariaObjects
 	public static final Block MARMOR_PILLAR = new BlockModRotatedPillar(Material.ROCK).setUnlocalizedName("randomdimensions.marmor_pillar").setRegistryName(Dimensions.MODID, "marmor_pillar").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block MARMOR_BOOKSHELF = new BlockMarmorBookshelf(Material.ROCK).setUnlocalizedName("randomdimensions.marmor_bookshelf").setRegistryName(Dimensions.MODID, "marmor_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block MARMOR_TILE_STAIRS = new BlockModStairs(MARMOR_TILE.getDefaultState()).setUnlocalizedName("randomdimensions.marmor_tile_stairs").setRegistryName(Dimensions.MODID, "marmor_tile_stairs").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+	public static final Block MARMOR_RAILING = new BlockRailing(Material.ROCK).setUnlocalizedName("randomdimensions.marmor_railing").setRegistryName(Dimensions.MODID, "marmor_railing").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+
+	public static final Block OAK_RAILING = new BlockRailing(Material.WOOD).setUnlocalizedName("randomdimensions.oak_railing").setRegistryName(Dimensions.MODID, "oak_railing").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
 	public static final Block CHARRED_PLANKS = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.charred_planks").setRegistryName(Dimensions.MODID, "charred_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block CHARRED_BOOKSHELF = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.charred_bookshelf").setRegistryName(Dimensions.MODID, "charred_bookshelf").setCreativeTab(LIBRARIA_CREATIVE_TAB);
@@ -45,13 +49,14 @@ public class LibrariaObjects
 	public static final Block ASH_PILE = new BlockPile().setUnlocalizedName("randomdimensions.ash_pile").setRegistryName(Dimensions.MODID, "ash_pile").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block PUDDLE = new BlockPileTranslucent().setUnlocalizedName("randomdimensions.puddle").setRegistryName(Dimensions.MODID, "puddle").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
+
 	public static void init()
 	{
-		DimensionsObjects.registerBlock(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR, MARMOR_BOOKSHELF);
+		DimensionsObjects.registerBlock(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR, MARMOR_BOOKSHELF, MARMOR_RAILING);
 		DimensionsObjects.registerBlock(CHARRED_PLANKS, CHARRED_BOOKSHELF, SMOLDERING_PLANKS, SMOLDERING_BOOKSHELF);
 		DimensionsObjects.registerBlock(WET_PLANKS, WET_BOOKSHELF, SOAKED_PLANKS, SOAKED_BOOKSHELF);
 		DimensionsObjects.registerBlock(PAPER_PILE, ASH_PILE, PUDDLE);
-		DimensionsObjects.registerBlock(ENORMOUS_BOOK_OPEN, ENORMOUS_BOOK_CLOSED);
+		DimensionsObjects.registerBlock(ENORMOUS_BOOK_OPEN, ENORMOUS_BOOK_CLOSED, OAK_RAILING);
 	}
 
 	private static class DimensionsLibrariaCreativeTab extends CreativeTabs
