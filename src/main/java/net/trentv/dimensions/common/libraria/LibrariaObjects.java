@@ -33,6 +33,9 @@ public class LibrariaObjects
 	public static final Block MARMOR_TILE_STAIRS = new BlockModStairs(MARMOR_TILE.getDefaultState()).setUnlocalizedName("randomdimensions.marmor_tile_stairs").setRegistryName(Dimensions.MODID, "marmor_tile_stairs").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block MARMOR_RAILING = new BlockRailing(Material.ROCK).setUnlocalizedName("randomdimensions.marmor_railing").setRegistryName(Dimensions.MODID, "marmor_railing").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
+	public static final Block MARMOR_LAMP = new Block(Material.ROCK).setLightLevel(1).setUnlocalizedName("marmor_lamp").setRegistryName(Dimensions.MODID, "marmor_lamp").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+	public static final Block MARMOR_LAMP_BROKEN = new Block(Material.ROCK).setUnlocalizedName("marmor_lamp_broken").setRegistryName(Dimensions.MODID, "marmor_lamp_broken").setCreativeTab(LIBRARIA_CREATIVE_TAB);
+
 	public static final Block OAK_RAILING = new BlockRailing(Material.WOOD).setUnlocalizedName("randomdimensions.oak_railing").setRegistryName(Dimensions.MODID, "oak_railing").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
 	public static final Block CHARRED_PLANKS = new Block(Material.WOOD).setUnlocalizedName("randomdimensions.charred_planks").setRegistryName(Dimensions.MODID, "charred_planks").setCreativeTab(LIBRARIA_CREATIVE_TAB);
@@ -52,7 +55,7 @@ public class LibrariaObjects
 
 	public static void init()
 	{
-		DimensionsObjects.registerBlock(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR, MARMOR_BOOKSHELF, MARMOR_RAILING);
+		DimensionsObjects.registerBlock(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR, MARMOR_BOOKSHELF, MARMOR_RAILING, MARMOR_LAMP, MARMOR_LAMP_BROKEN);
 		DimensionsObjects.registerBlock(CHARRED_PLANKS, CHARRED_BOOKSHELF, SMOLDERING_PLANKS, SMOLDERING_BOOKSHELF);
 		DimensionsObjects.registerBlock(WET_PLANKS, WET_BOOKSHELF, SOAKED_PLANKS, SOAKED_BOOKSHELF);
 		DimensionsObjects.registerBlock(PAPER_PILE, ASH_PILE, PUDDLE);
