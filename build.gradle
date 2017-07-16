@@ -32,6 +32,7 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 // Below here is what you probably want to change.
@@ -52,4 +53,10 @@ minecraft {
 
 dependencies {
 
+}
+
+jar {
+	manifest {	
+	    attributes 'FMLAT': 'Dimensions_at.cfg'
+	}
 }
