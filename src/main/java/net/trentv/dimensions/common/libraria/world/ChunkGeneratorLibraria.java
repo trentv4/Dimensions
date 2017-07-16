@@ -1,46 +1,53 @@
 package net.trentv.dimensions.common.libraria.world;
 
+import java.util.HashMap;
 import java.util.List;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
-import net.trentv.dimensions.common.libraria.LibrariaObjects;
+import net.minecraft.world.gen.structure.template.TemplateManager;
 
 public class ChunkGeneratorLibraria implements IChunkGenerator
 {
-	private static final IBlockState MARMOR = LibrariaObjects.MARMOR.getDefaultState();
-	private static final IBlockState STONE = Blocks.STONE.getDefaultState();
-	private static final IBlockState GRASS = Blocks.GRASS.getDefaultState();
+	public static TemplateManager manager;
+	private static final HashMap<LibrariaZonePos, LibrariaZone> zones = new HashMap<LibrariaZonePos, LibrariaZone>();
 	private World world;
 
 	public ChunkGeneratorLibraria(World world)
 	{
 		this.world = world;
+		manager = world.getSaveHandler().getStructureTemplateManager();
 	}
 
 	@Override
 	public Chunk generateChunk(int x, int z)
 	{
 		ChunkPrimer p = new ChunkPrimer();
-		IBlockState state = MARMOR;
-		if ((x % 2 == 0 & z % 2 == 0) | (x % 2 == 1 & z % 2 == 1))
+
+		LibrariaZonePos pos = LibrariaZonePos.fromChunk(x, z);
+		LibrariaZone zone;
+		if (!zones.containsKey(pos))
 		{
-			state = STONE;
+			zone = new LibrariaZone(pos, world);
 		}
-		for(int i = 0; i < 16; i++)
+		else
 		{
-			for(int g = 0; g < 16; g++)
-			{
-				p.setBlockState(i, 0, g, state);
-			}
+			zone = zones.get(pos);
 		}
+		LibrariaRoom[] rooms = zone.getRooms(x, z);
+		int y = 0;
+
+		for (LibrariaRoom room : rooms)
+		{
+			room.build(p, 0, y, 0);
+			y += room.size;
+		}
+
 		Chunk chunk = new Chunk(world, p, x, z);
 		chunk.generateSkylightMap();
 		return chunk;
@@ -81,5 +88,4 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 	{
 		return false;
 	}
-
 }
