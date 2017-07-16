@@ -20,11 +20,19 @@ public class DimensionLibraria
 	public static WorldProvider provider;
 	public static DimensionType dimensionType;
 	
-	public static Biome BIOME_LIBRARIA;
+	public static Biome BIOME_MARMOR;
+	public static Biome BIOME_SMOLDERING;
+	public static Biome BIOME_WET;
+	public static Biome BIOME_WOOD;
+	public static Biome[] BIOMES;
 
 	public static void register(int id, String dimName)
 	{
-		BIOME_LIBRARIA = new BiomeLibraria(new Biome.BiomeProperties("Libraria").setRainDisabled()).setRegistryName(Dimensions.MODID, "biome_libraria");
+		BIOME_MARMOR = new BiomeLibraria(new Biome.BiomeProperties("Marmor Library").setRainDisabled()).setRegistryName(Dimensions.MODID, "biome_libraria_marmor");
+		BIOME_SMOLDERING = new BiomeLibraria(new Biome.BiomeProperties("Smoldering Library").setRainDisabled()).setRegistryName(Dimensions.MODID, "biome_libraria_smoldering");
+		BIOME_WET = new BiomeLibraria(new Biome.BiomeProperties("Wet Library").setRainDisabled()).setRegistryName(Dimensions.MODID, "biome_libraria_wet");
+		BIOME_WOOD = new BiomeLibraria(new Biome.BiomeProperties("Wooden Library").setRainDisabled()).setRegistryName(Dimensions.MODID, "biome_libraria_wood");
+		BIOMES = new Biome[] { BIOME_MARMOR, BIOME_SMOLDERING, BIOME_WET, BIOME_WOOD };
 
 		dimensionID = id;
 		provider = new WorldProviderLibraria();
@@ -34,15 +42,10 @@ public class DimensionLibraria
 
 	public static class WorldProviderLibraria extends WorldProvider
 	{
-		public WorldProviderLibraria()
-		{
-
-		}
-
 		@Override
 		protected void init()
 		{
-			this.biomeProvider = new BiomeProviderSingle(BIOME_LIBRARIA);
+			this.biomeProvider = new BiomeProviderSingle(BIOME_MARMOR);
 			this.hasSkyLight = true;
 		}
 
@@ -75,6 +78,11 @@ public class DimensionLibraria
 		{
 			return biomeProvider;
 		}
+	}
+
+	public static class BiomeProviderLibraria extends BiomeProvider
+	{
+
 	}
 
 	public static class TeleporterLibraria extends Teleporter

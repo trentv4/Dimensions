@@ -40,7 +40,10 @@ public abstract class CommonProxy
 		@SubscribeEvent
 		public void registerBiomes(RegistryEvent.Register<Biome> event)
 		{
-			event.getRegistry().register(DimensionLibraria.BIOME_LIBRARIA);
+			event.getRegistry().register(DimensionLibraria.BIOME_MARMOR);
+			event.getRegistry().register(DimensionLibraria.BIOME_SMOLDERING);
+			event.getRegistry().register(DimensionLibraria.BIOME_WET);
+			event.getRegistry().register(DimensionLibraria.BIOME_WOOD);
 		}
 
 		@SubscribeEvent
