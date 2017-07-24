@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.trentv.dimensions.common.CommonProxy;
 import net.trentv.dimensions.common.DimensionsObjects;
-import net.trentv.dimensions.common.libraria.LibrariaObjects;
+import net.trentv.dimensions.common.block.BlockEnormousBook.BlockEnormousBookOpen;
 
 public class ClientProxy extends CommonProxy
 {
@@ -90,9 +90,9 @@ public class ClientProxy extends CommonProxy
 			{
 				BlockPos resultPos = result.getBlockPos();
 				BlockPos entityPos = new BlockPos(Math.floor(entity.posX), Math.floor(entity.posY), Math.floor(entity.posZ));
-				if (world.getBlockState(resultPos).getBlock() == LibrariaObjects.ENORMOUS_BOOK_OPEN)
+				if (world.getBlockState(resultPos).getBlock() instanceof BlockEnormousBookOpen)
 				{
-					if (world.getBlockState(entityPos).getBlock() == LibrariaObjects.ENORMOUS_BOOK_OPEN)
+					if (world.getBlockState(entityPos).getBlock() instanceof BlockEnormousBookOpen)
 					{
 						return true;
 					}

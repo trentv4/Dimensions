@@ -8,8 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.trentv.dimensions.Dimensions;
 import net.trentv.dimensions.common.DimensionsObjects;
-import net.trentv.dimensions.common.libraria.block.BlockEnormousBook.BlockEnormousBookClosed;
-import net.trentv.dimensions.common.libraria.block.BlockEnormousBook.BlockEnormousBookOpen;
 import net.trentv.dimensions.common.libraria.block.BlockMarmorBookshelf;
 import net.trentv.dimensions.common.libraria.block.BlockModRotatedPillar;
 import net.trentv.dimensions.common.libraria.block.BlockModStairs;
@@ -22,9 +20,6 @@ import net.trentv.dimensions.common.libraria.block.BlockSmoldering;
 public class LibrariaObjects
 {
 	public static final DimensionsLibrariaCreativeTab LIBRARIA_CREATIVE_TAB = new DimensionsLibrariaCreativeTab("randomdimensions.libraria");
-
-	public static final Block ENORMOUS_BOOK_OPEN = new BlockEnormousBookOpen(Material.WOOD).setUnlocalizedName("randomdimensions.enormous_book").setRegistryName(Dimensions.MODID, "enormous_book_open");
-	public static final Block ENORMOUS_BOOK_CLOSED = new BlockEnormousBookClosed(Material.WOOD).setUnlocalizedName("randomdimensions.enormous_book").setRegistryName(Dimensions.MODID, "enormous_book_closed").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 
 	public static final Block MARMOR = new Block(Material.ROCK).setUnlocalizedName("randomdimensions.marmor").setRegistryName(Dimensions.MODID, "marmor").setCreativeTab(LIBRARIA_CREATIVE_TAB);
 	public static final Block MARMOR_TILE = new Block(Material.ROCK).setUnlocalizedName("randomdimensions.marmor_tile").setRegistryName(Dimensions.MODID, "marmor_tile").setCreativeTab(LIBRARIA_CREATIVE_TAB);
@@ -54,11 +49,13 @@ public class LibrariaObjects
 
 	public static void init()
 	{
-		DimensionsObjects.registerBlock(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR, MARMOR_BOOKSHELF, MARMOR_RAILING, MARMOR_LAMP, MARMOR_LAMP_BROKEN);
-		DimensionsObjects.registerBlock(CHARRED_PLANKS, CHARRED_BOOKSHELF, SMOLDERING_PLANKS, SMOLDERING_BOOKSHELF);
-		DimensionsObjects.registerBlock(WET_PLANKS, WET_BOOKSHELF, SOAKED_PLANKS, SOAKED_BOOKSHELF);
-		DimensionsObjects.registerBlock(PAPER_PILE, ASH_PILE, PUDDLE);
-		DimensionsObjects.registerBlock(ENORMOUS_BOOK_OPEN, ENORMOUS_BOOK_CLOSED, OAK_RAILING);
+		DimensionsObjects.registerBlockAndItem(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR, MARMOR_BOOKSHELF, MARMOR_RAILING, MARMOR_LAMP, MARMOR_LAMP_BROKEN);
+		DimensionsObjects.registerBlockAndItem(CHARRED_PLANKS, CHARRED_BOOKSHELF, SMOLDERING_PLANKS, SMOLDERING_BOOKSHELF);
+		DimensionsObjects.registerBlockAndItem(WET_PLANKS, WET_BOOKSHELF, SOAKED_PLANKS, SOAKED_BOOKSHELF);
+		DimensionsObjects.registerBlockAndItem(PAPER_PILE, ASH_PILE, PUDDLE);
+		DimensionsObjects.registerBlockAndItem(OAK_RAILING);
+
+		DimensionLibraria.register(200, "libraria");
 	}
 
 	private static class DimensionsLibrariaCreativeTab extends CreativeTabs

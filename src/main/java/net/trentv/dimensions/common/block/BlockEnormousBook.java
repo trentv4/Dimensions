@@ -1,4 +1,4 @@
-package net.trentv.dimensions.common.libraria.block;
+package net.trentv.dimensions.common.block;
 
 import java.util.Random;
 
@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -20,20 +21,39 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.DimensionType;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.trentv.dimensions.common.libraria.DimensionLibraria;
-import net.trentv.dimensions.common.libraria.DimensionLibraria.TeleporterLibraria;
-import net.trentv.dimensions.common.libraria.LibrariaObjects;
+import net.trentv.dimensions.common.DimensionsObjects;
+import net.trentv.dimensions.common.TeleporterAcceptAll;
 
 public class BlockEnormousBook extends BlockHorizontal
 {
-	public BlockEnormousBook(Material material)
+	protected final int DIMENSION_FROM_ID;
+	protected final int DIMENSION_TO_ID;
+	protected BlockEnormousBookOpen openBook;
+	protected BlockEnormousBookClosed closedBook;
+
+	public BlockEnormousBook(Material material, int dimFromID, int dimToID)
 	{
 		super(material);
 		this.blockHardness = 1;
+		this.DIMENSION_FROM_ID = dimFromID;
+		this.DIMENSION_TO_ID = dimToID;
+	}
+
+	public static void register(String unlocalizedName, String registryName, CreativeTabs tab, int dimFromID, int dimToID)
+	{
+		BlockEnormousBookOpen open = (BlockEnormousBookOpen) new BlockEnormousBookOpen(Material.WOOD, dimFromID, dimToID).setUnlocalizedName(unlocalizedName).setRegistryName("enormous_book_open" + registryName);
+		BlockEnormousBookClosed closed = (BlockEnormousBookClosed) new BlockEnormousBookClosed(Material.WOOD, dimFromID, dimToID).setUnlocalizedName(unlocalizedName).setRegistryName("enormous_book_closed" + registryName).setCreativeTab(tab);
+
+		open.openBook = open;
+		open.closedBook = closed;
+		closed.openBook = open;
+		closed.closedBook = closed;
+
+		DimensionsObjects.registerBlockAndItem(closed);
+		DimensionsObjects.registerBlock(open);
 	}
 
 	public static enum EnumHorizontalRelativeFacing implements IStringSerializable
@@ -94,9 +114,9 @@ public class BlockEnormousBook extends BlockHorizontal
 
 	public static class BlockEnormousBookClosed extends BlockEnormousBook
 	{
-		public BlockEnormousBookClosed(Material material)
+		public BlockEnormousBookClosed(Material material, int dimFromID, int dimToID)
 		{
-			super(material);
+			super(material, dimFromID, dimToID);
 		}
 
 		@Override
@@ -130,7 +150,7 @@ public class BlockEnormousBook extends BlockHorizontal
 			BlockPos leftPos = pos.offset(EnumHorizontalRelativeFacing.LEFT.map(face));
 			if (world.getBlockState(leftPos).getBlock().isReplaceable(world, leftPos))
 			{
-				IBlockState baseState = LibrariaObjects.ENORMOUS_BOOK_OPEN.getDefaultState().withProperty(FACING, face);
+				IBlockState baseState = openBook.getDefaultState().withProperty(FACING, face);
 				world.setBlockState(pos, baseState.withProperty(BlockEnormousBookOpen.SIDE, EnumHorizontalRelativeFacing.RIGHT));
 				world.setBlockState(leftPos, baseState.withProperty(BlockEnormousBookOpen.SIDE, EnumHorizontalRelativeFacing.LEFT));
 				return true;
@@ -147,9 +167,9 @@ public class BlockEnormousBook extends BlockHorizontal
 		private AxisAlignedBB AABB_HALF = new AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 0.5, 1.0);
 		public static final PropertyEnum<EnumHorizontalRelativeFacing> SIDE = PropertyEnum.create("side", EnumHorizontalRelativeFacing.class);
 
-		public BlockEnormousBookOpen(Material material)
+		public BlockEnormousBookOpen(Material material, int dimFromID, int dimToID)
 		{
-			super(material);
+			super(material, dimFromID, dimToID);
 		}
 
 		@Override
@@ -206,7 +226,7 @@ public class BlockEnormousBook extends BlockHorizontal
 		@Override
 		public Item getItemDropped(IBlockState state, Random rand, int fortune)
 		{
-			return Item.getItemFromBlock(LibrariaObjects.ENORMOUS_BOOK_CLOSED);
+			return Item.getItemFromBlock(closedBook);
 		}
 
 		@Override
@@ -249,11 +269,11 @@ public class BlockEnormousBook extends BlockHorizontal
 			EnumFacing otherFacing = side.getOpposite().map(facing);
 			BlockPos otherPos = pos.offset(otherFacing);
 			IBlockState otherState = world.getBlockState(otherPos);
-			
-			if(otherState == state.withProperty(SIDE, side.getOpposite()))
+
+			if (otherState == state.withProperty(SIDE, side.getOpposite()))
 			{
-				IBlockState closedState = LibrariaObjects.ENORMOUS_BOOK_CLOSED.getDefaultState().withProperty(FACING, facing);
-				if(side == EnumHorizontalRelativeFacing.LEFT)
+				IBlockState closedState = closedBook.getDefaultState().withProperty(FACING, facing);
+				if (side == EnumHorizontalRelativeFacing.LEFT)
 				{
 					world.setBlockState(pos, Blocks.AIR.getDefaultState());
 					world.setBlockState(otherPos, closedState);
@@ -263,26 +283,27 @@ public class BlockEnormousBook extends BlockHorizontal
 					world.setBlockState(pos, Blocks.AIR.getDefaultState());
 					world.setBlockState(otherPos, closedState.withProperty(FACING, facing.getOpposite()));
 				}
-				if(world instanceof WorldServer)
+				if (world instanceof WorldServer)
 				{
 					PlayerList playerList = world.getMinecraftServer().getPlayerList();
-					if(playerList != null)
+					if (playerList != null)
 					{
-						TeleporterLibraria teleporter = new TeleporterLibraria((WorldServer) world);
+						TeleporterAcceptAll teleporter = new TeleporterAcceptAll((WorldServer) world);
 						AxisAlignedBB boundingBox = new AxisAlignedBB(pos, otherPos).expand(0.5, 0.5, 0.5).offset(0, 0.5, 0);
-						
-						world.getEntitiesInAABBexcluding(null, boundingBox, EntitySelectors.IS_ALIVE).forEach(it -> {
+
+						world.getEntitiesInAABBexcluding(null, boundingBox, EntitySelectors.IS_ALIVE).forEach(it ->
+						{
 							it.setPortal(pos);
 							if (it instanceof EntityPlayerMP)
 							{
 								EntityPlayerMP teleportee = (EntityPlayerMP) it;
-								if (teleportee.dimension == DimensionLibraria.dimensionID)
+								if (teleportee.dimension == DIMENSION_TO_ID)
 								{
-									playerList.transferPlayerToDimension((EntityPlayerMP) it, DimensionType.OVERWORLD.getId(), teleporter);
+									playerList.transferPlayerToDimension((EntityPlayerMP) it, DIMENSION_FROM_ID, teleporter);
 								}
 								else
 								{
-									playerList.transferPlayerToDimension((EntityPlayerMP) it, DimensionLibraria.dimensionID, teleporter);
+									playerList.transferPlayerToDimension((EntityPlayerMP) it, DIMENSION_TO_ID, teleporter);
 								}
 							}
 						});
@@ -295,7 +316,7 @@ public class BlockEnormousBook extends BlockHorizontal
 
 		public void checkAndDropBlock(World world, BlockPos pos, IBlockState state)
 		{
-			if(!canBlockStay(world, pos, state))
+			if (!canBlockStay(world, pos, state))
 			{
 				// dropBlockAsItem(world, pos, state, 0);
 				removeSafely(world, pos, state);

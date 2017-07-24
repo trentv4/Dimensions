@@ -14,7 +14,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.trentv.dimensions.client.GuiScreenBookOutput;
-import net.trentv.dimensions.common.libraria.DimensionLibraria;
 import net.trentv.dimensions.common.libraria.LibrariaObjects;
 
 public abstract class CommonProxy
@@ -40,10 +39,10 @@ public abstract class CommonProxy
 		@SubscribeEvent
 		public void registerBiomes(RegistryEvent.Register<Biome> event)
 		{
-			event.getRegistry().register(DimensionLibraria.BIOME_MARMOR);
-			event.getRegistry().register(DimensionLibraria.BIOME_SMOLDERING);
-			event.getRegistry().register(DimensionLibraria.BIOME_WET);
-			event.getRegistry().register(DimensionLibraria.BIOME_WOOD);
+			for (Biome biome : DimensionsObjects.biomes)
+			{
+				event.getRegistry().register(biome);
+			}
 		}
 
 		@SubscribeEvent
@@ -66,19 +65,22 @@ public abstract class CommonProxy
 			Block block = event.getWorld().getBlockState(pos).getBlock();
 			if (block == Blocks.BOOKSHELF | block == LibrariaObjects.CHARRED_BOOKSHELF | block == LibrariaObjects.SMOLDERING_BOOKSHELF | block == LibrariaObjects.WET_BOOKSHELF | block == LibrariaObjects.SOAKED_BOOKSHELF | block == LibrariaObjects.MARMOR_BOOKSHELF)
 			{
-				Random random = new Random();
+				if (!event.getEntityPlayer().isSneaking())
+				{
+					Random random = new Random();
 
-				random.setSeed(seedify(pos.getX() + "," + pos.getY() + "," + pos.getZ()));
-				String s = "";
-				for (int i = 0; i < 300; i++)
-				{
-					s += alphabet[random.nextInt(alphabet.length)];
+					random.setSeed(seedify(pos.getX() + "," + pos.getY() + "," + pos.getZ()));
+					String s = "";
+					for (int i = 0; i < 300; i++)
+					{
+						s += alphabet[random.nextInt(alphabet.length)];
+					}
+					if (event.getWorld().isRemote)
+					{
+						Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBookOutput(s));
+					}
+					event.setCanceled(true);
 				}
-				if (event.getWorld().isRemote)
-				{
-					Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBookOutput(s));
-				}
-				event.setCanceled(true);
 			}
 		}
 

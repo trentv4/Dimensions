@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.trentv.dimensions.common.CommonProxy;
 import net.trentv.dimensions.common.DimensionsObjects;
-import net.trentv.dimensions.common.libraria.DimensionLibraria;
 
 @Mod(modid = Dimensions.MODID, version = Dimensions.VERSION, acceptedMinecraftVersions = "1.12")
 public class Dimensions
@@ -29,8 +28,6 @@ public class Dimensions
 		logger = event.getModLog();
 
 		DimensionsObjects.init();
-
-		DimensionLibraria.register(200, "libraria");
 
 		proxy.registerEventHandlers();
 	}
