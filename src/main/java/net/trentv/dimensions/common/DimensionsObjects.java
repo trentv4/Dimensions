@@ -10,6 +10,7 @@ import net.minecraft.world.biome.Biome;
 import net.trentv.dimensions.common.block.BlockEnormousBook;
 import net.trentv.dimensions.common.libraria.DimensionLibraria;
 import net.trentv.dimensions.common.libraria.LibrariaObjects;
+import net.trentv.dimensions.common.smudged.DimensionSmudgedCity;
 import net.trentv.dimensions.common.smudged.SmudgedObjects;
 
 public class DimensionsObjects
@@ -25,6 +26,7 @@ public class DimensionsObjects
 		SmudgedObjects.init();
 
 		BlockEnormousBook.register("randomdimensions.enormous_book", "", LibrariaObjects.LIBRARIA_CREATIVE_TAB, DimensionLibraria.dimensionID, DimensionType.OVERWORLD.getId());
+		BlockEnormousBook.register("randomdimensions.enormous_book_smudged", "_smudged", SmudgedObjects.SMUDGED_CITY_CREATIVE_TAB, DimensionSmudgedCity.dimensionID, DimensionType.OVERWORLD.getId());
 	}
 
 	public static void registerBlock(Block... toRegister)

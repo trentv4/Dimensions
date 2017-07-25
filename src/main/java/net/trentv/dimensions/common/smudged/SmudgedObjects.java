@@ -6,14 +6,16 @@ import net.minecraft.item.ItemStack;
 
 public class SmudgedObjects
 {
+	public static final DimensionsSmudgedCityCreativeTab SMUDGED_CITY_CREATIVE_TAB = new DimensionsSmudgedCityCreativeTab("randomdimensions.smudged_city");
+
 	public static void init()
 	{
 		DimensionSmudgedCity.register(300, "smudged_city");
 	}
 
-	private static class DimensionsSmudgedCreativeTab extends CreativeTabs
+	private static class DimensionsSmudgedCityCreativeTab extends CreativeTabs
 	{
-		public DimensionsSmudgedCreativeTab(String label)
+		public DimensionsSmudgedCityCreativeTab(String label)
 		{
 			super(label);
 		}
@@ -21,7 +23,7 @@ public class SmudgedObjects
 		@Override
 		public ItemStack getTabIconItem()
 		{
-			return new ItemStack(Blocks.BEACON);
+			return new ItemStack(Blocks.STONE);
 		}
 	}
 }

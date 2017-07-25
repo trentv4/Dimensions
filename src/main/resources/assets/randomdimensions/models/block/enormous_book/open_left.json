@@ -1,0 +1,23 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "particle": "randomdimensions:blocks/enormous_book/pages_side",
+        "down": "randomdimensions:blocks/enormous_book/front",
+        "up": "randomdimensions:blocks/enormous_book/page_back",
+        "north": "randomdimensions:blocks/enormous_book/open_pages_top",
+        "south": "randomdimensions:blocks/enormous_book/open_pages_bottom",
+        "west": "randomdimensions:blocks/enormous_book/pages_side"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 8, 16 ],
+            "faces": {
+                "down":  { "rotation": 180, "texture": "#down", "cullface": "down" },
+                "up":    { "texture": "#up" },
+                "north": { "rotation": 180, "uv": [0, 0, 16, 8], "texture": "#north", "cullface": "north" },
+                "south": { "rotation": 180, "uv": [0, 0, 16, 8], "texture": "#south", "cullface": "south" },
+                "west":  { "rotation": 180, "uv": [0, 0, 16, 8], "texture": "#west", "cullface": "west" }
+            }
+        }
+    ]
+}

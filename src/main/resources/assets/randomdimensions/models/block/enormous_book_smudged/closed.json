@@ -13,13 +13,13 @@
         }
     },
     "textures": {
-        "particle": "randomdimensions:blocks/enormous_book_pages_side",
-        "down": "randomdimensions:blocks/enormous_book_back",
-        "up": "randomdimensions:blocks/enormous_book_front",
-        "north": "randomdimensions:blocks/enormous_book_closed_pages_top",
-        "east": "randomdimensions:blocks/enormous_book_pages_side",
-        "south": "randomdimensions:blocks/enormous_book_closed_pages_bottom",
-        "west": "randomdimensions:blocks/enormous_book_binding"
+        "particle": "randomdimensions:blocks/enormous_book_smudged/pages_side",
+        "down": "randomdimensions:blocks/enormous_book_smudged/back",
+        "up": "randomdimensions:blocks/enormous_book_smudged/front",
+        "north": "randomdimensions:blocks/enormous_book_smudged/closed_pages_top",
+        "east": "randomdimensions:blocks/enormous_book_smudged/pages_side",
+        "south": "randomdimensions:blocks/enormous_book_smudged/closed_pages_bottom",
+        "west": "randomdimensions:blocks/enormous_book_smudged/binding"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],

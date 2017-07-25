@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "randomdimensions:enormous_book_smudged/closed" },
+        "facing=south": { "model": "randomdimensions:enormous_book_smudged/closed", "y": 180 },
+        "facing=west":  { "model": "randomdimensions:enormous_book_smudged/closed", "y": 270 },
+        "facing=east":  { "model": "randomdimensions:enormous_book_smudged/closed", "y": 90 }
+    }
+}

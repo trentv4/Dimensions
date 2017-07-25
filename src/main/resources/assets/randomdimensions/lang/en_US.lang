@@ -19,5 +19,8 @@ tile.randomdimensions.wet_bookshelf.name=Wet Bookshelf
 tile.randomdimensions.soaked_planks.name=Soaked Planks
 tile.randomdimensions.soaked_bookshelf.name=Soaked Bookshelf
 tile.randomdimensions.puddle.name=Puddle
-
 itemGroup.randomdimensions.libraria=Random Dimensions: Libraria
+
+
+tile.randomdimensions.enormous_book_smudged.name=Enormous Book
+itemGroup.randomdimensions.smudged_city=Random Dimensions: The Smudged City

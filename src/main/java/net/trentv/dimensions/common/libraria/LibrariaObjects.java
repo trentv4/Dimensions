@@ -3,7 +3,6 @@ package net.trentv.dimensions.common.libraria;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.trentv.dimensions.Dimensions;
@@ -68,7 +67,7 @@ public class LibrariaObjects
 		@Override
 		public ItemStack getTabIconItem()
 		{
-			return new ItemStack(Blocks.BEACON);
+			return new ItemStack(MARMOR);
 		}
 	}
 }

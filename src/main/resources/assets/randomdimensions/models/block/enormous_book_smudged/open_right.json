@@ -1,12 +1,12 @@
 {
     "parent": "block/block",
     "textures": {
-        "particle": "randomdimensions:blocks/enormous_book_pages_side",
-        "down": "randomdimensions:blocks/enormous_book_back",
-        "up": "randomdimensions:blocks/enormous_book_page_front",
-        "north": "randomdimensions:blocks/enormous_book_open_pages_top",
-        "east": "randomdimensions:blocks/enormous_book_pages_side",
-        "south": "randomdimensions:blocks/enormous_book_open_pages_bottom"
+        "particle": "randomdimensions:blocks/enormous_book_smudged/pages_side",
+        "down": "randomdimensions:blocks/enormous_book_smudged/back",
+        "up": "randomdimensions:blocks/enormous_book_smudged/page_front",
+        "north": "randomdimensions:blocks/enormous_book_smudged/open_pages_top",
+        "east": "randomdimensions:blocks/enormous_book_smudged/pages_side",
+        "south": "randomdimensions:blocks/enormous_book_smudged/open_pages_bottom"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],
