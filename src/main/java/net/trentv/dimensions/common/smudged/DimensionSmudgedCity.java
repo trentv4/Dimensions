@@ -6,11 +6,11 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.biome.BiomeProviderSingle;
-import net.minecraft.world.gen.ChunkGeneratorDebug;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.common.DimensionManager;
 import net.trentv.dimensions.Dimensions;
 import net.trentv.dimensions.common.DimensionsObjects;
+import net.trentv.dimensions.common.smudged.world.ChunkGeneratorSmudgedCity;
 
 public class DimensionSmudgedCity
 {
@@ -75,7 +75,7 @@ public class DimensionSmudgedCity
 		@Override
 		public IChunkGenerator createChunkGenerator()
 		{
-			return new ChunkGeneratorDebug(world);
+			return new ChunkGeneratorSmudgedCity(world);
 		}
 
 		@Override
