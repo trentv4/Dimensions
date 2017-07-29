@@ -29,12 +29,17 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 	private IBlockState BRICKS = Blocks.BRICK_BLOCK.getDefaultState();
 	private IBlockState STONE_BRICKS = Blocks.STONEBRICK.getDefaultState().withProperty(BlockStoneBrick.VARIANT, BlockStoneBrick.EnumType.DEFAULT);
 
+	private NoiseGeneratorPerlinBounded perlin;
 	private HashMap<ResourceLocation, Template> templates = new HashMap<ResourceLocation, Template>();
 
 	public ChunkGeneratorSmudgedCity(World world)
 	{
 		this.world = world;
 		manager = world.getSaveHandler().getStructureTemplateManager();
+		Random r = new Random();
+		r.setSeed(world.getSeed());
+		r.setSeed(r.nextLong());
+		perlin = new NoiseGeneratorPerlinBounded(r, 16);
 	}
 
 	@Override
@@ -45,73 +50,104 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 		Random r = new Random();
 		r.setSeed(world.getSeed());
 		r.setSeed(cx * r.nextLong() + cz * r.nextLong());
-
-		// 0: bedrock
-		// 1-17: sewers
-		// 18-66: factories
-		// 67-243: residences
-		// 244-255: 11 blocks of working area
-
-		// Bedrock
-
-		for (int x = 0; x < 16; x++)
-		{
-			for (int z = 0; z < 16; z++)
-			{
-				p.setBlockState(x, 0, z, BEDROCK);
-			}
-		}
-
-		// Sewers
-
-		for (int y = 1; y <= 16; y++)
-		{
-			for (int x = 0; x < 16; x++)
-			{
-				for (int z = 0; z < 16; z++)
-				{
-					p.setBlockState(x, y, z, BRICKS);
-				}
-			}
-		}
-
-		// Factories
-
-		for (int y = 17; y <= 48; y++)
-		{
-			for (int x = 0; x < 16; x++)
-			{
-				for (int z = 0; z < 16; z++)
-				{
-					p.setBlockState(x, y, z, STONE_BRICKS);
-				}
-			}
-		}
-
-		// Residences
-
-		spawnResidences(p, 0, 0, r);
-		spawnResidences(p, 8, 0, r);
-		spawnResidences(p, 0, 8, r);
-		spawnResidences(p, 8, 8, r);
+		generateBedrockLayer(p, r, 0);
+		generateSewerLayer(p, r, 1);
+		generateFactoryLayer(p, r, 17);
+		generateResidenceLayer(p, r, cx, 65, cz);
 
 		Chunk chunk = new Chunk(world, p, cx, cz);
 		chunk.generateSkylightMap();
 		return chunk;
 	}
 
-	public void spawnResidences(ChunkPrimer p, int sx, int sz, Random r)
+	private void generateBedrockLayer(ChunkPrimer p, Random r, int y)
 	{
-		int toHeight = 49 + (r.nextInt(22) * 8);
-
-		for (int y = 49; y < toHeight; y += 8)
+		for (int x = 0; x < 16; x++)
 		{
-			Template t = getTemplate(new ResourceLocation(Dimensions.MODID, "residence_" + r.nextInt(2)));
-			for (BlockInfo info : t.blocks)
+			for (int z = 0; z < 16; z++)
 			{
-				BlockPos pos = info.pos.add(sx, y, sz);
-				p.setBlockState(pos.getX(), pos.getY(), pos.getZ(), info.blockState);
+				p.setBlockState(x, y, z, BEDROCK);
 			}
+		}
+	}
+
+	private void generateSewerLayer(ChunkPrimer p, Random r, int yn)
+	{
+		for (int x = 0; x < 16; x++)
+		{
+			for (int z = 0; z < 16; z++)
+			{
+				for (int y = 0; y < 16; y++)
+				{
+					p.setBlockState(x, y + yn, z, BRICKS);
+				}
+			}
+		}
+	}
+
+	private void generateFactoryLayer(ChunkPrimer p, Random r, int yn)
+	{
+		for (int x = 0; x < 16; x++)
+		{
+			for (int z = 0; z < 16; z++)
+			{
+				for (int y = 0; y < 48; y++)
+				{
+					p.setBlockState(x, y + yn, z, STONE_BRICKS);
+				}
+			}
+		}
+	}
+
+	private void generateResidenceLayer(ChunkPrimer p, Random r, int xn, int yn, int zn)
+	{
+		int height00 = getHeightAtPosition(xn, zn);
+		int height10 = getHeightAtPosition(xn + 0.5, zn);
+		int height01 = getHeightAtPosition(xn, zn + 0.5);
+		int height11 = getHeightAtPosition(xn + 0.5, zn + 0.5);
+
+		for (int i = 0; i < height00; i += 8)
+		{
+			boolean is8 = r.nextInt(6) != 0;
+			if (is8)
+			{
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(2)), new BlockPos(0, yn + i, 0));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(2)), new BlockPos(8, yn + i, 0));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(2)), new BlockPos(0, yn + i, 8));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(2)), new BlockPos(8, yn + i, 8));
+			}
+			else
+			{
+				for (int x = 0; x < 16; x++)
+				{
+					for (int z = 0; z < 16; z++)
+					{
+						for (int y = 0; y < 8; y++)
+						{
+							p.setBlockState(x, y + yn + i, z, BRICKS);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public int getHeightAtPosition(double cx, double cz)
+	{
+		double scaling = 0.125;
+		double val = perlin.getValue(cx * scaling, cz * scaling);
+		int height = ((int) (val * 11)) * 16;
+
+		return 65 + height;
+	}
+
+	public void putTemplate(ChunkPrimer p, ResourceLocation template, BlockPos offset)
+	{
+		Template t = getTemplate(template);
+		for (BlockInfo info : t.blocks)
+		{
+			BlockPos pos = info.pos.add(offset);
+			p.setBlockState(pos.getX(), pos.getY(), pos.getZ(), info.blockState);
 		}
 	}
 
