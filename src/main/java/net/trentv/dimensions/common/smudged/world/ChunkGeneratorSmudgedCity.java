@@ -32,6 +32,9 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 	private NoiseGeneratorPerlinBounded perlin;
 	private HashMap<ResourceLocation, Template> templates = new HashMap<ResourceLocation, Template>();
 
+	private final int SIZE_8_ROOM_COUNT = 4;
+	private final int SIZE_16_ROOM_COUNT = 1;
+
 	public ChunkGeneratorSmudgedCity(World world)
 	{
 		this.world = world;
@@ -108,23 +111,14 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 			boolean is8 = r.nextInt(6) != 0;
 			if (is8)
 			{
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(2)), new BlockPos(0, yn + i, 0));
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(2)), new BlockPos(8, yn + i, 0));
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(2)), new BlockPos(0, yn + i, 8));
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(2)), new BlockPos(8, yn + i, 8));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(0, yn + i, 0));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(8, yn + i, 0));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(0, yn + i, 8));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(8, yn + i, 8));
 			}
 			else
 			{
-				for (int x = 0; x < 16; x++)
-				{
-					for (int z = 0; z < 16; z++)
-					{
-						for (int y = 0; y < 8; y++)
-						{
-							p.setBlockState(x, y + yn + i, z, BRICKS);
-						}
-					}
-				}
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_16_" + r.nextInt(SIZE_16_ROOM_COUNT)), new BlockPos(0, yn + i, 0));
 			}
 		}
 	}
