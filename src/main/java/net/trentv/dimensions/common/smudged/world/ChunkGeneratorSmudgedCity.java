@@ -101,12 +101,9 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 
 	private void generateResidenceLayer(ChunkPrimer p, Random r, int xn, int yn, int zn)
 	{
-		int height00 = getHeightAtPosition(xn, zn);
-		int height10 = getHeightAtPosition(xn + 0.5, zn);
-		int height01 = getHeightAtPosition(xn, zn + 0.5);
-		int height11 = getHeightAtPosition(xn + 0.5, zn + 0.5);
+		int height = getHeightAtPosition(xn, zn);
 
-		for (int i = 0; i < height00; i += 8)
+		for (int i = 0; i < height; i += 8)
 		{
 			boolean is8 = r.nextInt(6) != 0;
 			if (is8)
