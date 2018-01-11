@@ -2,17 +2,50 @@ package net.trentv.dimensions.common.libraria.world.rooms;
 
 import java.util.Random;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkPrimer;
+import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
+import net.trentv.dimensions.common.libraria.LibrariaObjects;
 
 public class LibrariaRoomPanel extends LibrariaRoom
 {
+	public LibrariaRoomPanel(LibrariaBiome biome)
+	{
+		super(biome);
+	}
 
 	@Override
 	public Chunk build(World world, int chunkX, int chunkY, Random r)
 	{
-		// TODO Auto-generated method stub
-		return null;
-	}
+		// TODO: Consider biome material
+		IBlockState s = LibrariaObjects.MARMOR.getDefaultState();
+		ChunkPrimer p = new ChunkPrimer();
 
+		int modX = chunkX % 12;
+		int modY = chunkY % 12;
+
+		if ((inside(modX, 0, 2) & inside(modY, 3, 5)) | (inside(modX, 6, 8) & inside(modY, 9, 11)))
+		{
+			for (int x = 0; x < 16; x++)
+			{
+				for (int y = 0; y < 256; y++)
+				{
+					p.setBlockState(15 - x, y, x, s);
+				}
+			}
+		}
+		if ((inside(modX, 0, 2) & inside(modY, 9, 11)) | (inside(modX, 6, 8) & inside(modY, 3, 5)))
+		{
+			for (int x = 0; x < 16; x++)
+			{
+				for (int y = 0; y < 256; y++)
+				{
+					p.setBlockState(x, y, x, s);
+				}
+			}
+		}
+		return new Chunk(world, p, chunkX, chunkY);
+	}
 }

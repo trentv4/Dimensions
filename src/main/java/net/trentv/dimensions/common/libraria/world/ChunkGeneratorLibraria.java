@@ -37,9 +37,6 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 		r.setSeed(world.getSeed());
 		r.setSeed(x * r.nextLong() + z * r.nextLong());
 
-		// In this order: marmor, wood, smoldering, wet
-		int biome = r.nextInt(4);
-
 		Chunk chunk = LibrariaRoom.getRoom(x % 12, z % 12, r).build(world, x, z, r);
 
 		chunk.generateSkylightMap();

@@ -40,6 +40,26 @@ public class DimensionLibraria
 		DimensionManager.registerDimension(dimensionID, dimensionType);
 	}
 
+	public static enum LibrariaBiome
+	{
+		MARMOR, SMOLDERING, WET, WOOD;
+
+		public static LibrariaBiome fromInt(int in)
+		{
+			switch (in)
+			{
+				case 0:
+					return MARMOR;
+				case 1:
+					return SMOLDERING;
+				case 2:
+					return WET;
+				default:
+					return WOOD;
+			}
+		}
+	}
+
 	public static class WorldProviderLibraria extends WorldProvider
 	{
 		@Override
