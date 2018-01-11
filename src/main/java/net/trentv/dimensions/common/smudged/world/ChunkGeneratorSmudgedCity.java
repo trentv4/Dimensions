@@ -16,9 +16,10 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.structure.template.Template;
-import net.minecraft.world.gen.structure.template.Template.BlockInfo;
 import net.minecraft.world.gen.structure.template.TemplateManager;
 import net.trentv.dimensions.Dimensions;
+import net.trentv.dimensions.common.AdvancedChunkPrimer;
+import net.trentv.dimensions.common.PrimerTemplate;
 
 public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 {
@@ -48,7 +49,7 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 	@Override
 	public Chunk generateChunk(int cx, int cz)
 	{
-		ChunkPrimer p = new ChunkPrimer();
+		AdvancedChunkPrimer p = new AdvancedChunkPrimer();
 
 		Random r = new Random();
 		r.setSeed(world.getSeed());
@@ -58,7 +59,7 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 		generateFactoryLayer(p, r, 17);
 		generateResidenceLayer(p, r, cx, 65, cz);
 
-		Chunk chunk = new Chunk(world, p, cx, cz);
+		Chunk chunk = p.toChunk(world, cx, cz);
 		chunk.generateSkylightMap();
 		return chunk;
 	}
@@ -102,7 +103,7 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 		}
 	}
 
-	private void generateResidenceLayer(ChunkPrimer p, Random r, int xn, int yn, int zn)
+	private void generateResidenceLayer(AdvancedChunkPrimer p, Random r, int xn, int yn, int zn)
 	{
 		int height = getHeightAtPosition(xn, zn);
 
@@ -111,14 +112,14 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 			boolean is8 = r.nextInt(6) != 0;
 			if (is8)
 			{
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(0, yn + i, 0));
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(8, yn + i, 0));
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(0, yn + i, 8));
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(8, yn + i, 8));
+				new PrimerTemplate(new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), world).put(p, new BlockPos(0, yn + i, 0));
+				new PrimerTemplate(new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), world).put(p, new BlockPos(8, yn + i, 0));
+				new PrimerTemplate(new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), world).put(p, new BlockPos(0, yn + i, 8));
+				new PrimerTemplate(new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), world).put(p, new BlockPos(8, yn + i, 8));
 			}
 			else
 			{
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_16_" + r.nextInt(SIZE_16_ROOM_COUNT)), new BlockPos(0, yn + i, 0));
+				new PrimerTemplate(new ResourceLocation(Dimensions.MODID, "residence_16_" + r.nextInt(SIZE_16_ROOM_COUNT)), world).put(p, new BlockPos(0, yn + i, 0));
 			}
 		}
 	}
@@ -130,27 +131,6 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 		int height = ((int) (val * 11)) * 16;
 
 		return 65 + height;
-	}
-
-	public void putTemplate(ChunkPrimer p, ResourceLocation template, BlockPos offset)
-	{
-		Template t = getTemplate(template);
-		for (BlockInfo info : t.blocks)
-		{
-			BlockPos pos = info.pos.add(offset);
-			p.setBlockState(pos.getX(), pos.getY(), pos.getZ(), info.blockState);
-		}
-	}
-
-	public Template getTemplate(ResourceLocation location)
-	{
-		if (templates.containsKey(location))
-		{
-			return templates.get(location);
-		}
-		Template t = manager.getTemplate(world.getMinecraftServer(), location);
-		templates.put(location, t);
-		return t;
 	}
 
 	@Override
