@@ -10,6 +10,7 @@ import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.structure.template.TemplateManager;
+import net.trentv.dimensions.common.libraria.world.rooms.LibrariaRoom;
 
 public class ChunkGeneratorLibraria implements IChunkGenerator
 {
@@ -39,7 +40,7 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 		// In this order: marmor, wood, smoldering, wet
 		int biome = r.nextInt(4);
 
-		Chunk chunk = new LibrariaRoom(x % 12, z % 12, r).build(world, x, z);
+		Chunk chunk = LibrariaRoom.getRoom(x % 12, z % 12, r).build(world, x, z, r);
 
 		chunk.generateSkylightMap();
 		return chunk;
