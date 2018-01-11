@@ -1,21 +1,19 @@
 package net.trentv.dimensions.common.libraria.world;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.structure.template.TemplateManager;
 
 public class ChunkGeneratorLibraria implements IChunkGenerator
 {
 	public static TemplateManager manager;
-	private static final HashMap<LibrariaZonePos, LibrariaZone> zones = new HashMap<LibrariaZonePos, LibrariaZone>();
 	private World world;
 
 	public ChunkGeneratorLibraria(World world)
@@ -24,34 +22,30 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 		manager = world.getSaveHandler().getStructureTemplateManager();
 	}
 
+	// Brief overview of what this generates:
+	// https://i.imgur.com/cEueghR.png
+
+	// 11 by 11 looking from the top down
+	// 9 by 9 of rooms
+	// 2 by 1 for bridges
+
 	@Override
 	public Chunk generateChunk(int x, int z)
 	{
-		ChunkPrimer p = new ChunkPrimer();
+		Random r = new Random();
+		r.setSeed(world.getSeed());
+		r.setSeed(x * r.nextLong() + z * r.nextLong());
 
-		LibrariaZonePos pos = LibrariaZonePos.fromChunk(x, z);
-		LibrariaZone zone;
-		if (!zones.containsKey(pos))
-		{
-			zone = new LibrariaZone(pos, world);
-		}
-		else
-		{
-			zone = zones.get(pos);
-		}
-		LibrariaRoom[] rooms = zone.getRooms(x, z);
-		int y = 0;
+		// In this order: marmor, wood, smoldering, wet
+		int biome = r.nextInt(4);
 
-		for (LibrariaRoom room : rooms)
-		{
-			room.build(p, 0, y, 0);
-			y += room.size;
-		}
+		Chunk chunk = new LibrariaRoom(x % 12, z % 12, r).build(world, x, z);
 
-		Chunk chunk = new Chunk(world, p, x, z);
 		chunk.generateSkylightMap();
 		return chunk;
 	}
+
+	/* BLAH BLAH DON'T CARE RIGHT NOW BLAH BLAH */
 
 	@Override
 	public void populate(int x, int z)
