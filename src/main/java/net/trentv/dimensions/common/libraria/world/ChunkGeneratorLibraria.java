@@ -9,18 +9,15 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraft.world.gen.structure.template.TemplateManager;
 import net.trentv.dimensions.common.libraria.world.rooms.LibrariaRoom;
 
 public class ChunkGeneratorLibraria implements IChunkGenerator
 {
-	public static TemplateManager manager;
 	private World world;
 
 	public ChunkGeneratorLibraria(World world)
 	{
 		this.world = world;
-		manager = world.getSaveHandler().getStructureTemplateManager();
 	}
 
 	// Brief overview of what this generates:
@@ -40,6 +37,8 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 		Chunk chunk = LibrariaRoom.getRoom(x % 12, z % 12, r).build(world, x, z, r);
 
 		chunk.generateSkylightMap();
+		chunk.enqueueRelightChecks();
+		chunk.checkLight();
 		return chunk;
 	}
 
