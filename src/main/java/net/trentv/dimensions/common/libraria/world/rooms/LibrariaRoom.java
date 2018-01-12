@@ -39,8 +39,10 @@ public abstract class LibrariaRoom
 			return new LibrariaRoomNormal(newBiome);
 		if ((x == 1 | x == 7) & (y == 4 | y == 10))
 			return new LibrariaRoomNull(newBiome);
+		/*
 		if (inside(x, 1, 7) & inside(y, 4, 10))
 			return new LibrariaRoomNormal(newBiome);
+		 */
 		return new LibrariaRoomNull(newBiome);
 	}
 
