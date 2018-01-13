@@ -22,7 +22,7 @@ public abstract class LibrariaRoom
 		// rooms. If you do know, ping me! Maybe measuring distance...
 
 		// This really is required viewing to understand the following.
-		// https://i.imgur.com/wVFSWGM.png
+		// https://i.imgur.com/Mjmo05Y.png
 		LibrariaBiome newBiome = LibrariaBiome.fromInt(r.nextInt(4));
 
 		if (x == 4 & inside(y, 0, 2))
