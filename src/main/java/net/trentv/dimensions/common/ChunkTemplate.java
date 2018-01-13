@@ -46,6 +46,12 @@ public class ChunkTemplate extends Template
 		addEntitiesToChunk(in, offset, rotationCount);
 	}
 
+	public void addAllToChunk(Chunk in, BlockPos offset)
+	{
+		addBlocksToChunk(in, offset, 0);
+		addEntitiesToChunk(in, offset, 0);
+	}
+
 	private BlockPos rotate(int count, BlockPos original)
 	{
 		if (count > 0)
