@@ -3,9 +3,13 @@ package net.trentv.dimensions.common.libraria.world.rooms;
 import java.util.Random;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.trentv.dimensions.Dimensions;
+import net.trentv.dimensions.common.ChunkTemplate;
 import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
 import net.trentv.dimensions.common.libraria.LibrariaObjects;
 
@@ -19,33 +23,27 @@ public class LibrariaRoomNormal extends LibrariaRoom
 	@Override
 	public Chunk build(World world, int chunkX, int chunkY, Random r)
 	{
-		// TODO: switch to Template
-		// This is temporary, just to make sure everything is lined up.
 		IBlockState state = LibrariaObjects.MARMOR.getDefaultState();
-		IBlockState books = LibrariaObjects.MARMOR_BOOKSHELF.getDefaultState();
 		ChunkPrimer p = new ChunkPrimer();
-		for (int x = 0; x < 16; x++)
+		for (int y = 0; y < 96; y++)
 		{
-			for (int y = 0; y < 256; y++)
+			for (int z = 0; z < 16; z++)
 			{
-				for (int z = 0; z < 16; z++)
-				{
-					p.setBlockState(x, y, z, books);
-				}
+				p.setBlockState(z, y, 0, state);
+				p.setBlockState(z, y, 15, state);
+				p.setBlockState(0, y, z, state);
+				p.setBlockState(15, y, z, state);
 			}
 		}
 
-		for (int y = 0; y < 256; y++)
+		Chunk start = new Chunk(world, p, chunkX, chunkY);
+		for (int i = 0; i <= 5; i++)
 		{
-			for (int x = 0; x < 4; x++)
-			{
-				p.setBlockState(x, y, 0, state);
-				p.setBlockState(15 - x, y, 15, state);
-				p.setBlockState(0, y, x, state);
-				p.setBlockState(15, y, 15 - x, state);
-			}
+			ResourceLocation file = new ResourceLocation(Dimensions.MODID, "room_marmor_0");
+			ChunkTemplate template = new ChunkTemplate(world, file);
+			template.addAllToChunk(start, new BlockPos(0, 96 + (i * 16), 0));
 		}
 
-		return new Chunk(world, p, chunkX, chunkY);
+		return start;
 	}
 }

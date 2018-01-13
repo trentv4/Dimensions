@@ -2,13 +2,16 @@ package net.trentv.dimensions.common.libraria.world.rooms;
 
 import java.util.Random;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkPrimer;
 import net.trentv.dimensions.Dimensions;
 import net.trentv.dimensions.common.ChunkTemplate;
 import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
+import net.trentv.dimensions.common.libraria.LibrariaObjects;
 
 public class LibrariaRoomStair extends LibrariaRoom
 {
@@ -20,7 +23,20 @@ public class LibrariaRoomStair extends LibrariaRoom
 	@Override
 	public Chunk build(World world, int chunkX, int chunkY, Random r)
 	{
-		Chunk start = new Chunk(world, chunkX, chunkY);
+		IBlockState state = LibrariaObjects.MARMOR.getDefaultState();
+		ChunkPrimer p = new ChunkPrimer();
+		for (int y = 0; y < 96; y++)
+		{
+			for (int z = 0; z < 16; z++)
+			{
+				p.setBlockState(z, y, 0, state);
+				p.setBlockState(z, y, 15, state);
+				p.setBlockState(0, y, z, state);
+				p.setBlockState(15, y, z, state);
+			}
+		}
+
+		Chunk start = new Chunk(world, p, chunkX, chunkY);
 		for (int i = 0; i <= 5; i++)
 		{
 			ResourceLocation file = new ResourceLocation(Dimensions.MODID, "stairs_marmor_middle_0");
