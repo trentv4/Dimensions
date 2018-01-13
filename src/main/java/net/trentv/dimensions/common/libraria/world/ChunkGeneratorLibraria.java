@@ -20,13 +20,6 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 		this.world = world;
 	}
 
-	// Brief overview of what this generates:
-	// https://i.imgur.com/cEueghR.png
-
-	// 11 by 11 looking from the top down
-	// 9 by 9 of rooms
-	// 2 by 1 for bridges
-
 	@Override
 	public Chunk generateChunk(int x, int z)
 	{
