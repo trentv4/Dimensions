@@ -36,6 +36,17 @@ public class LibrariaRoomStair extends LibrariaRoom
 			}
 		}
 
+		for (int y = 177; y < 256; y++)
+		{
+			for (int z = 0; z < 16; z++)
+			{
+				p.setBlockState(z, y, 0, state);
+				p.setBlockState(z, y, 15, state);
+				p.setBlockState(0, y, z, state);
+				p.setBlockState(15, y, z, state);
+			}
+		}
+
 		Chunk start = new Chunk(world, p, chunkX, chunkY);
 		for (int i = 0; i <= 5; i++)
 		{

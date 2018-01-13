@@ -21,7 +21,9 @@ public class LibrariaRoomBridge extends LibrariaRoom
 	public Chunk build(World world, int chunkX, int chunkY, Random r)
 	{
 		Chunk start = new Chunk(world, chunkX, chunkY);
-		ChunkTemplate template = new ChunkTemplate(world, new ResourceLocation(Dimensions.MODID, "bridge_marmor_" + r.nextInt(6)));
+		ResourceLocation file = new ResourceLocation(Dimensions.MODID, "bridge_marmor_" + r.nextInt(6));
+		System.out.println(file);
+		ChunkTemplate template = new ChunkTemplate(world, file);
 		int rotationCount = (chunkY % 12 == 7 ? 0 : 1);
 		template.addAllToChunk(start, new BlockPos(0, 128, 0), rotationCount);
 
