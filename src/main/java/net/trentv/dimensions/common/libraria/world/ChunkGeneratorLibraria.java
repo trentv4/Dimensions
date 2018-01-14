@@ -26,9 +26,15 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 	{
 		Random r = new Random();
 		r.setSeed(world.getSeed());
-		r.setSeed(x * r.nextLong() + z * r.nextLong());
 
-		Chunk chunk = LibrariaRoom.getRoom(x % 12, z % 12, r, LibrariaBiome.fromInt(0)).build(world, x, z, r);
+		long roomSeed = x * r.nextInt() + z * r.nextInt();
+		long biomeSeed = (long) (Math.floor(x / 12d) * r.nextInt() + Math.floor(z / 12d) * r.nextInt());
+
+		r.setSeed(biomeSeed);
+		LibrariaBiome chunkBiome = LibrariaBiome.fromInt(r.nextInt(4));
+		r.setSeed(roomSeed);
+
+		Chunk chunk = LibrariaRoom.getRoom(x % 12, z % 12, r, chunkBiome).build(world, x, z, r);
 
 		chunk.generateSkylightMap();
 		chunk.enqueueRelightChecks();
