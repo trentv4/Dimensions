@@ -7,7 +7,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
-import net.trentv.dimensions.common.libraria.LibrariaObjects;
 
 public class LibrariaRoomPanel extends LibrariaRoom
 {
@@ -19,8 +18,7 @@ public class LibrariaRoomPanel extends LibrariaRoom
 	@Override
 	public Chunk build(World world, int chunkX, int chunkY, Random r)
 	{
-		// TODO: Consider biome material
-		IBlockState s = LibrariaObjects.MARMOR.getDefaultState();
+		IBlockState s = biome.fillerBlock.getDefaultState();
 		ChunkPrimer p = new ChunkPrimer();
 
 		int modX = chunkX % 12;

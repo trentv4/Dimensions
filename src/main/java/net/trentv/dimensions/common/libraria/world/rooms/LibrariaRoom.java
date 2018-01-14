@@ -15,7 +15,7 @@ public abstract class LibrariaRoom
 		this.biome = biome;
 	}
 
-	public static final LibrariaRoom getRoom(int x, int y, Random r)
+	public static final LibrariaRoom getRoom(int x, int y, Random r, LibrariaBiome newBiome)
 	{
 		// Okay, before I start, this may as well be a magic function.
 		// I can't figure out the right way to map an octagon with consistent
@@ -23,7 +23,6 @@ public abstract class LibrariaRoom
 
 		// This really is required viewing to understand the following.
 		// https://i.imgur.com/Mjmo05Y.png
-		LibrariaBiome newBiome = LibrariaBiome.fromInt(r.nextInt(4));
 
 		if (x == 4 & inside(y, 0, 2))
 			return new LibrariaRoomBridge(newBiome);
@@ -39,10 +38,6 @@ public abstract class LibrariaRoom
 			return new LibrariaRoomNormal(newBiome);
 		if ((x == 1 | x == 7) & (y == 4 | y == 10))
 			return new LibrariaRoomNull(newBiome);
-		/*
-		if (inside(x, 1, 7) & inside(y, 4, 10))
-			return new LibrariaRoomNormal(newBiome);
-		 */
 		return new LibrariaRoomNull(newBiome);
 	}
 

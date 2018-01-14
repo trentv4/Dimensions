@@ -1,5 +1,7 @@
 package net.trentv.dimensions.common.libraria;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.Biome;
@@ -42,7 +44,16 @@ public class DimensionLibraria
 
 	public static enum LibrariaBiome
 	{
-		MARMOR, SMOLDERING, WET, WOOD;
+		MARMOR("marmor", LibrariaObjects.MARMOR), SMOLDERING("smoldering", LibrariaObjects.SMOLDERING_PLANKS), WET("wet", LibrariaObjects.SOAKED_PLANKS), WOOD("wood", Blocks.PLANKS);
+
+		public String id;
+		public Block fillerBlock;
+
+		LibrariaBiome(String id, Block fillerBlock)
+		{
+			this.fillerBlock = fillerBlock;
+			this.id = id;
+		}
 
 		public static LibrariaBiome fromInt(int in)
 		{

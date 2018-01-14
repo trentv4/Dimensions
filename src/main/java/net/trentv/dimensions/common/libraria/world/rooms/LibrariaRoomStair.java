@@ -11,7 +11,6 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.trentv.dimensions.Dimensions;
 import net.trentv.dimensions.common.ChunkTemplate;
 import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
-import net.trentv.dimensions.common.libraria.LibrariaObjects;
 
 public class LibrariaRoomStair extends LibrariaRoom
 {
@@ -23,7 +22,7 @@ public class LibrariaRoomStair extends LibrariaRoom
 	@Override
 	public Chunk build(World world, int chunkX, int chunkY, Random r)
 	{
-		IBlockState state = LibrariaObjects.MARMOR.getDefaultState();
+		IBlockState state = biome.fillerBlock.getDefaultState();
 		ChunkPrimer p = new ChunkPrimer();
 		for (int y = 0; y < 256; y++)
 		{
@@ -49,18 +48,18 @@ public class LibrariaRoomStair extends LibrariaRoom
 
 		Chunk start = new Chunk(world, p, chunkX, chunkY);
 
-		ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_marmor_bottom_0");
+		ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_" + biome.id + "_bottom_0");
 		ChunkTemplate template = new ChunkTemplate(world, file);
 		template.addAllToChunk(start, new BlockPos(0, 96, 0));
 
 		for (int i = 1; i < 4; i++)
 		{
-			file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_marmor_middle_0");
+			file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_" + biome.id + "_middle_0");
 			template = new ChunkTemplate(world, file);
 			template.addAllToChunk(start, new BlockPos(0, 96 + (i * 16), 0));
 		}
 
-		file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_marmor_top_0");
+		file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_" + biome.id + "_top_0");
 		template = new ChunkTemplate(world, file);
 		template.addAllToChunk(start, new BlockPos(0, 160, 0));
 

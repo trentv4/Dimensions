@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.IChunkGenerator;
+import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
 import net.trentv.dimensions.common.libraria.world.rooms.LibrariaRoom;
 
 public class ChunkGeneratorLibraria implements IChunkGenerator
@@ -27,7 +28,7 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 		r.setSeed(world.getSeed());
 		r.setSeed(x * r.nextLong() + z * r.nextLong());
 
-		Chunk chunk = LibrariaRoom.getRoom(x % 12, z % 12, r).build(world, x, z, r);
+		Chunk chunk = LibrariaRoom.getRoom(x % 12, z % 12, r, LibrariaBiome.fromInt(0)).build(world, x, z, r);
 
 		chunk.generateSkylightMap();
 		chunk.enqueueRelightChecks();

@@ -11,7 +11,6 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.trentv.dimensions.Dimensions;
 import net.trentv.dimensions.common.ChunkTemplate;
 import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
-import net.trentv.dimensions.common.libraria.LibrariaObjects;
 
 public class LibrariaRoomNormal extends LibrariaRoom
 {
@@ -23,7 +22,7 @@ public class LibrariaRoomNormal extends LibrariaRoom
 	@Override
 	public Chunk build(World world, int chunkX, int chunkY, Random r)
 	{
-		IBlockState state = LibrariaObjects.MARMOR.getDefaultState();
+		IBlockState state = biome.fillerBlock.getDefaultState();
 		ChunkPrimer p = new ChunkPrimer();
 		for (int y = 0; y < 256; y++)
 		{
@@ -50,7 +49,7 @@ public class LibrariaRoomNormal extends LibrariaRoom
 		Chunk start = new Chunk(world, p, chunkX, chunkY);
 		for (int i = 0; i <= 5; i++)
 		{
-			ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/room_marmor_0");
+			ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/room_" + biome.id + "_0");
 			ChunkTemplate template = new ChunkTemplate(world, file);
 			template.addAllToChunk(start, new BlockPos(0, 96 + (i * 16), 0));
 		}
