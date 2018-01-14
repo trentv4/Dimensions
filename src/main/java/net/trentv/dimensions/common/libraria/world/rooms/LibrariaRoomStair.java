@@ -50,7 +50,7 @@ public class LibrariaRoomStair extends LibrariaRoom
 		Chunk start = new Chunk(world, p, chunkX, chunkY);
 		for (int i = 0; i <= 5; i++)
 		{
-			ResourceLocation file = new ResourceLocation(Dimensions.MODID, "stairs_marmor_middle_0");
+			ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_marmor_middle_0");
 			ChunkTemplate template = new ChunkTemplate(world, file);
 			template.addAllToChunk(start, new BlockPos(0, 96 + (i * 16), 0));
 		}

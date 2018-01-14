@@ -111,14 +111,14 @@ public class ChunkGeneratorSmudgedCity implements IChunkGenerator
 			boolean is8 = r.nextInt(6) != 0;
 			if (is8)
 			{
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(0, yn + i, 0));
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(8, yn + i, 0));
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(0, yn + i, 8));
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(8, yn + i, 8));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "smudged/residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(0, yn + i, 0));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "smudged/residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(8, yn + i, 0));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "smudged/residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(0, yn + i, 8));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "smudged/residence_8_" + r.nextInt(SIZE_8_ROOM_COUNT)), new BlockPos(8, yn + i, 8));
 			}
 			else
 			{
-				putTemplate(p, new ResourceLocation(Dimensions.MODID, "residence_16_" + r.nextInt(SIZE_16_ROOM_COUNT)), new BlockPos(0, yn + i, 0));
+				putTemplate(p, new ResourceLocation(Dimensions.MODID, "smudged/residence_16_" + r.nextInt(SIZE_16_ROOM_COUNT)), new BlockPos(0, yn + i, 0));
 			}
 		}
 	}
