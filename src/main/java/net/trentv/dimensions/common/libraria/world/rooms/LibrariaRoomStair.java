@@ -25,7 +25,7 @@ public class LibrariaRoomStair extends LibrariaRoom
 	{
 		IBlockState state = LibrariaObjects.MARMOR.getDefaultState();
 		ChunkPrimer p = new ChunkPrimer();
-		for (int y = 0; y < 96; y++)
+		for (int y = 0; y < 256; y++)
 		{
 			for (int z = 0; z < 16; z++)
 			{
@@ -34,26 +34,35 @@ public class LibrariaRoomStair extends LibrariaRoom
 				p.setBlockState(0, y, z, state);
 				p.setBlockState(15, y, z, state);
 			}
-		}
-
-		for (int y = 177; y < 256; y++)
-		{
-			for (int z = 0; z < 16; z++)
+			if (y == 96)
 			{
-				p.setBlockState(z, y, 0, state);
-				p.setBlockState(z, y, 15, state);
-				p.setBlockState(0, y, z, state);
-				p.setBlockState(15, y, z, state);
+				y = 176;
+				for (int x = 0; x < 16; x++)
+				{
+					for (int z2 = 0; z2 < 16; z2++)
+					{
+						p.setBlockState(x, y, z2, state);
+					}
+				}
 			}
 		}
 
 		Chunk start = new Chunk(world, p, chunkX, chunkY);
-		for (int i = 0; i <= 5; i++)
+
+		ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_marmor_bottom_0");
+		ChunkTemplate template = new ChunkTemplate(world, file);
+		template.addAllToChunk(start, new BlockPos(0, 96, 0));
+
+		for (int i = 1; i < 4; i++)
 		{
-			ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_marmor_middle_0");
-			ChunkTemplate template = new ChunkTemplate(world, file);
+			file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_marmor_middle_0");
+			template = new ChunkTemplate(world, file);
 			template.addAllToChunk(start, new BlockPos(0, 96 + (i * 16), 0));
 		}
+
+		file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_marmor_top_0");
+		template = new ChunkTemplate(world, file);
+		template.addAllToChunk(start, new BlockPos(0, 160, 0));
 
 		return start;
 	}

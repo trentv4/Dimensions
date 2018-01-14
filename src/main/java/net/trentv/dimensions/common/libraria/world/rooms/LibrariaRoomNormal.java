@@ -25,7 +25,7 @@ public class LibrariaRoomNormal extends LibrariaRoom
 	{
 		IBlockState state = LibrariaObjects.MARMOR.getDefaultState();
 		ChunkPrimer p = new ChunkPrimer();
-		for (int y = 0; y < 96; y++)
+		for (int y = 0; y < 256; y++)
 		{
 			for (int z = 0; z < 16; z++)
 			{
@@ -34,16 +34,16 @@ public class LibrariaRoomNormal extends LibrariaRoom
 				p.setBlockState(0, y, z, state);
 				p.setBlockState(15, y, z, state);
 			}
-		}
-
-		for (int y = 177; y < 256; y++)
-		{
-			for (int z = 0; z < 16; z++)
+			if (y == 96)
 			{
-				p.setBlockState(z, y, 0, state);
-				p.setBlockState(z, y, 15, state);
-				p.setBlockState(0, y, z, state);
-				p.setBlockState(15, y, z, state);
+				y = 176;
+				for (int x = 0; x < 16; x++)
+				{
+					for (int z2 = 0; z2 < 16; z2++)
+					{
+						p.setBlockState(x, y, z2, state);
+					}
+				}
 			}
 		}
 
