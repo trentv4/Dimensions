@@ -70,7 +70,7 @@ public abstract class CommonProxy
 				{
 					Random random = new Random();
 
-					random.setSeed(seedify(pos.getX() + "," + pos.getY() + "," + pos.getZ()));
+					random.setSeed(pos.hashCode());
 					String s = "";
 					for (int i = 0; i < 300; i++)
 					{
@@ -83,20 +83,6 @@ public abstract class CommonProxy
 					event.setCanceled(true);
 				}
 			}
-		}
-
-		private long seedify(String s)
-		{
-			if (s != null)
-			{
-				long hash = 0;
-				for (char c : s.toCharArray())
-				{
-					hash = 31L * hash + c;
-				}
-				return hash;
-			}
-			return 0;
 		}
 	}
 }
