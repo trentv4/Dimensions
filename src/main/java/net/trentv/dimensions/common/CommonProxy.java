@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.math.BlockPos;
@@ -15,6 +14,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBloc
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.trentv.dimensions.client.GuiScreenBookOutput;
 import net.trentv.dimensions.common.libraria.LibrariaObjects;
+import net.trentv.dimensions.common.libraria.block.BlockLibrariaBookshelf;
 
 public abstract class CommonProxy
 {
@@ -63,7 +63,8 @@ public abstract class CommonProxy
 		{
 			BlockPos pos = event.getPos();
 			Block block = event.getWorld().getBlockState(pos).getBlock();
-			if (block == Blocks.BOOKSHELF | block == LibrariaObjects.CHARRED_BOOKSHELF | block == LibrariaObjects.SMOLDERING_BOOKSHELF | block == LibrariaObjects.WET_BOOKSHELF | block == LibrariaObjects.SOAKED_BOOKSHELF | block == LibrariaObjects.MARMOR_BOOKSHELF)
+			// This needs work.
+			if (block instanceof BlockLibrariaBookshelf | block == LibrariaObjects.SMOLDERING_BOOKSHELF | block == LibrariaObjects.SOAKED_BOOKSHELF)
 			{
 				if (!event.getEntityPlayer().isSneaking())
 				{

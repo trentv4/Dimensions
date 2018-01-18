@@ -8,9 +8,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
-public class BlockMarmorBookshelf extends Block
+public class BlockLibrariaBookshelf extends Block
 {
-	public BlockMarmorBookshelf(Material material)
+	public BlockLibrariaBookshelf(Material material)
 	{
 		super(material);
 	}
