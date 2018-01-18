@@ -13,6 +13,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.trentv.dimensions.client.GuiScreenBookOutput;
+import net.trentv.dimensions.common.libraria.DimensionLibraria;
 import net.trentv.dimensions.common.libraria.LibrariaObjects;
 import net.trentv.dimensions.common.libraria.block.BlockLibrariaBookshelf;
 
@@ -61,6 +62,8 @@ public abstract class CommonProxy
 		@SubscribeEvent
 		public void onRightClick(RightClickBlock event)
 		{
+			if (event.getEntityPlayer().dimension != DimensionLibraria.dimensionID)
+				return;
 			BlockPos pos = event.getPos();
 			Block block = event.getWorld().getBlockState(pos).getBlock();
 			// This needs work.
