@@ -38,8 +38,8 @@ processResources
 // Below here is what you probably want to change.
 
 version = "1.0"
-group= "net.trentv.mod"
-archivesBaseName = "modname"
+group= "net.trentv.dimensions"
+archivesBaseName = "dimensions"
 
 minecraft {
     // http://files.minecraftforge.net/
