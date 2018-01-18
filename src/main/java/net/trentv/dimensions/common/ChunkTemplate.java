@@ -7,8 +7,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.structure.template.Template;
+import net.minecraft.world.gen.structure.template.Template.BlockInfo;
+import net.minecraft.world.gen.structure.template.Template.EntityInfo;
 
-public class ChunkTemplate extends Template
+public class ChunkTemplate
 {
 	private final Template TEMPLATE;
 	private World world;
