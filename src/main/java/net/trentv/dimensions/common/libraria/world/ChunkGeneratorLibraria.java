@@ -27,8 +27,8 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 		Random r = new Random();
 		r.setSeed(world.getSeed());
 
-		long roomSeed = x * r.nextInt() + z * r.nextInt();
-		long biomeSeed = (long) (Math.floor(x / 12d) * r.nextInt() + Math.floor(z / 12d) * r.nextInt());
+		long roomSeed = getSeed(x, z, r);
+		long biomeSeed = getSeed((int) Math.floor(x / 12d), (int) Math.floor(z / 12d), r);
 
 		r.setSeed(biomeSeed);
 		LibrariaBiome chunkBiome = LibrariaBiome.fromInt(r.nextInt(4));
@@ -40,6 +40,19 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 		chunk.enqueueRelightChecks();
 		chunk.checkLight();
 		return chunk;
+	}
+
+	private long getSeed(int x, int z, Random r)
+	{
+		long xRand = r.nextInt();
+		long zRand = r.nextInt();
+
+		if (xRand == 0)
+			xRand = 1;
+		if (zRand == 0)
+			zRand = 1;
+
+		return (x * xRand) + (z * zRand);
 	}
 
 	/* BLAH BLAH DON'T CARE RIGHT NOW BLAH BLAH */
