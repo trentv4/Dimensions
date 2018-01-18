@@ -31,9 +31,9 @@ public class BlockSmoldering extends BlockParticleDripper
 	@Override
 	public int getPackedLightmapCoords(IBlockState state, IBlockAccess source, BlockPos pos)
 	{
-		if(MinecraftForgeClient.getRenderLayer() == BlockRenderLayer.CUTOUT)
+		if (MinecraftForgeClient.getRenderLayer() == BlockRenderLayer.CUTOUT)
 		{
-			// Just return 255? I dunno, don't see what this accomplishes in particular.
+			// Using getCombinedLight() factors both sky light and block light.
 			int result = source.getCombinedLight(pos, 1);
 			int skylight = (result >> 16) & 0xFFFF;
 			return (skylight << 16) | (15 << 4);
