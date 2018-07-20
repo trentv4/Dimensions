@@ -72,7 +72,7 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 	@Override
 	public List<SpawnListEntry> getPossibleCreatures(EnumCreatureType creatureType, BlockPos pos)
 	{
-		return null;
+		return this.world.getBiome(pos).getSpawnableList(creatureType);
 	}
 
 	@Override

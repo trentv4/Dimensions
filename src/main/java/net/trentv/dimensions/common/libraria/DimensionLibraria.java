@@ -6,7 +6,6 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeDecorator;
-import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.common.DimensionManager;
@@ -87,27 +86,9 @@ public class DimensionLibraria
 		}
 
 		@Override
-		public boolean isSurfaceWorld()
-		{
-			return false;
-		}
-
-		@Override
-		public boolean isSkyColored()
-		{
-			return false;
-		}
-
-		@Override
 		public IChunkGenerator createChunkGenerator()
 		{
 			return new ChunkGeneratorLibraria(world);
-		}
-
-		@Override
-		public BiomeProvider getBiomeProvider()
-		{
-			return biomeProvider;
 		}
 	}
 
