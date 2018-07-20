@@ -22,22 +22,27 @@ public abstract class LibrariaRoom
 		// rooms. If you do know, ping me! Maybe measuring distance...
 
 		// This really is required viewing to understand the following.
-		// https://i.imgur.com/Mjmo05Y.png
+		// https://i.imgur.com/0nhtEMY.png
 
-		if (x == 4 & inside(y, 0, 2))
-			return new LibrariaRoomBridge(newBiome);
-		if (inside(x, 9, 11) & y == 7)
-			return new LibrariaRoomBridge(newBiome);
-		if ((x == 2 | x == 6) & (y == 5 | y == 9))
-			return new LibrariaRoomStair(newBiome);
-		if (Math.abs(x - 4) + Math.abs(y - 7) == 6 & inside(x, 0, 8) & inside(y, 3, 11))
-			return new LibrariaRoomPanel(newBiome);
-		if (x == 4 & y == 7)
+		if (x == 4 && y == 4)
 			return new LibrariaRoomBook(newBiome);
-		if ((x <= 8 & inside(y, 6, 8)) | (inside(x, 3, 5) & inside(y, 3, 11)))
+
+		if (x == 4 & inside(y, 9, 10))
+			return new LibrariaRoomBridge(newBiome);
+		if (y == 4 & inside(x, 9, 10))
+			return new LibrariaRoomBridge(newBiome);
+
+		if ((x == 2 || x == 6) && (y == 2 || y == 6))
+			return new LibrariaRoomStair(newBiome);
+
+		if (inside(x, 3, 5) && inside(y, 0, 8))
 			return new LibrariaRoomNormal(newBiome);
-		if ((x == 1 | x == 7) & (y == 4 | y == 10))
-			return new LibrariaRoomNull(newBiome);
+		if (inside(y, 3, 5) && inside(x, 0, 8))
+			return new LibrariaRoomNormal(newBiome);
+
+		if (Math.abs(x - 4) + Math.abs(y - 4) == 6)
+			return new LibrariaRoomPanel(newBiome);
+
 		return new LibrariaRoomNull(newBiome);
 	}
 

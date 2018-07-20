@@ -24,7 +24,7 @@ public class LibrariaRoomPanel extends LibrariaRoom
 		int modX = chunkX % 12;
 		int modY = chunkY % 12;
 
-		if ((inside(modX, 0, 2) & inside(modY, 3, 5)) | (inside(modX, 6, 8) & inside(modY, 9, 11)))
+		if ((inside(modX, 0, 2) & inside(modY, 0, 2)) | inside(modX, 6, 8) & inside(modY, 6, 8))
 		{
 			for (int x = 0; x < 16; x++)
 			{
@@ -34,7 +34,7 @@ public class LibrariaRoomPanel extends LibrariaRoom
 				}
 			}
 		}
-		if ((inside(modX, 0, 2) & inside(modY, 9, 11)) | (inside(modX, 6, 8) & inside(modY, 3, 5)))
+		if ((inside(modX, 0, 2) & inside(modY, 6, 8)) | (inside(modX, 6, 8) & inside(modY, 0, 2)))
 		{
 			for (int x = 0; x < 16; x++)
 			{
