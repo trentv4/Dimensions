@@ -43,6 +43,9 @@ public abstract class LibrariaRoom
 		if (Math.abs(x - 4) + Math.abs(y - 4) == 6)
 			return new LibrariaRoomPanel(newBiome);
 
+		if (inside(x, 1, 7) && inside(y, 1, 7))
+			return new LibrariaRoomSolid(newBiome);
+
 		return new LibrariaRoomNull(newBiome);
 	}
 

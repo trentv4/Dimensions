@@ -46,11 +46,22 @@ public class LibrariaRoomNormal extends LibrariaRoom
 			}
 		}
 
+		for (int x = 0; x < 16; x++)
+		{
+			for (int z = 0; z < 16; z++)
+			{
+				for (int y = 192; y < 255; y++)
+				{
+					p.setBlockState(x, y, z, state);
+				}
+			}
+		}
+
 		Chunk start = new Chunk(world, p, chunkX, chunkY);
 		for (int i = 0; i <= 5; i++)
 		{
-			ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/room_" + biome.id + "_0");
-			ChunkTemplate template = new ChunkTemplate(world, file);
+			ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/" + biome.id + "/room/" + r.nextInt(4) + "_fresh");
+			ChunkTemplate template = ChunkTemplate.getChunkTemplate(world, file);
 			template.addAllToChunk(start, new BlockPos(0, 96 + (i * 16), 0));
 		}
 

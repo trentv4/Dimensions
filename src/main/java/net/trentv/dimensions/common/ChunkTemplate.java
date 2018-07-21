@@ -1,5 +1,7 @@
 package net.trentv.dimensions.common;
 
+import java.util.HashMap;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.util.ResourceLocation;
@@ -12,13 +14,25 @@ import net.minecraft.world.gen.structure.template.Template.EntityInfo;
 
 public class ChunkTemplate
 {
+	private final static HashMap<ResourceLocation, ChunkTemplate> CACHE = new HashMap<ResourceLocation, ChunkTemplate>();
 	private final Template TEMPLATE;
 	private World world;
 
-	public ChunkTemplate(World world, ResourceLocation file)
+	private ChunkTemplate(World world, ResourceLocation file)
 	{
 		this.world = world;
 		this.TEMPLATE = world.getSaveHandler().getStructureTemplateManager().getTemplate(world.getMinecraftServer(), file);
+	}
+
+	public static ChunkTemplate getChunkTemplate(World world, ResourceLocation file)
+	{
+		if (CACHE.containsKey(file))
+		{
+			return CACHE.get(file);
+		}
+		ChunkTemplate temp = new ChunkTemplate(world, file);
+		CACHE.put(file, temp);
+		return temp;
 	}
 
 	public void addBlocksToChunk(Chunk in, BlockPos offset, int rotationCount)

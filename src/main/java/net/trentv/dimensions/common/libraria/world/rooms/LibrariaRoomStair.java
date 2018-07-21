@@ -46,22 +46,32 @@ public class LibrariaRoomStair extends LibrariaRoom
 			}
 		}
 
-		Chunk start = new Chunk(world, p, chunkX, chunkY);
+		for (int x = 0; x < 16; x++)
+		{
+			for (int z = 0; z < 16; z++)
+			{
+				for (int y = 192; y < 254; y++)
+				{
+					p.setBlockState(x, y, z, state);
+				}
+			}
+		}
 
-		ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_" + biome.id + "_bottom_0");
-		ChunkTemplate template = new ChunkTemplate(world, file);
+		Chunk start = new Chunk(world, p, chunkX, chunkY);
+		ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/" + biome.id + "/stairs/bottom/0");
+		ChunkTemplate template = ChunkTemplate.getChunkTemplate(world, file);
 		template.addAllToChunk(start, new BlockPos(0, 96, 0));
 
-		for (int i = 1; i < 4; i++)
+		for (int i = 1; i <= 4; i++)
 		{
-			file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_" + biome.id + "_middle_0");
-			template = new ChunkTemplate(world, file);
+			file = new ResourceLocation(Dimensions.MODID, "libraria/" + biome.id + "/stairs/middle/0");
+			template = ChunkTemplate.getChunkTemplate(world, file);
 			template.addAllToChunk(start, new BlockPos(0, 96 + (i * 16), 0));
 		}
 
-		file = new ResourceLocation(Dimensions.MODID, "libraria/stairs_" + biome.id + "_top_0");
-		template = new ChunkTemplate(world, file);
-		template.addAllToChunk(start, new BlockPos(0, 160, 0));
+		file = new ResourceLocation(Dimensions.MODID, "libraria/" + biome.id + "/stairs/top/0");
+		template = ChunkTemplate.getChunkTemplate(world, file);
+		template.addAllToChunk(start, new BlockPos(0, 176, 0));
 
 		return start;
 	}

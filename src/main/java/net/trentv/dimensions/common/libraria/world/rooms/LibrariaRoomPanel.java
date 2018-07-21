@@ -21,8 +21,8 @@ public class LibrariaRoomPanel extends LibrariaRoom
 		IBlockState s = biome.fillerBlock.getDefaultState();
 		ChunkPrimer p = new ChunkPrimer();
 
-		int modX = chunkX % 12;
-		int modY = chunkY % 12;
+		int modX = chunkX % 11;
+		int modY = chunkY % 11;
 
 		if ((inside(modX, 0, 2) & inside(modY, 0, 2)) | inside(modX, 6, 8) & inside(modY, 6, 8))
 		{
