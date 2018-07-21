@@ -19,7 +19,7 @@ public class BlockSmoldering extends BlockParticleDripper
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
 	{
-		return MinecraftForgeClient.getRenderLayer() == BlockRenderLayer.CUTOUT ? 1 : 0;
+		return 1;
 	}
 
 	@Override
