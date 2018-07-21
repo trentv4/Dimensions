@@ -24,38 +24,8 @@ public class LibrariaRoomStair extends LibrariaRoom
 	{
 		IBlockState state = biome.fillerBlock.getDefaultState();
 		ChunkPrimer p = new ChunkPrimer();
-		for (int y = 0; y < 256; y++)
-		{
-			for (int z = 0; z < 16; z++)
-			{
-				p.setBlockState(z, y, 0, state);
-				p.setBlockState(z, y, 15, state);
-				p.setBlockState(0, y, z, state);
-				p.setBlockState(15, y, z, state);
-			}
-			if (y == 96)
-			{
-				y = 176;
-				for (int x = 0; x < 16; x++)
-				{
-					for (int z2 = 0; z2 < 16; z2++)
-					{
-						p.setBlockState(x, y, z2, state);
-					}
-				}
-			}
-		}
-
-		for (int x = 0; x < 16; x++)
-		{
-			for (int z = 0; z < 16; z++)
-			{
-				for (int y = 192; y < 254; y++)
-				{
-					p.setBlockState(x, y, z, state);
-				}
-			}
-		}
+		fillPrimer(p, state, 0, 95);
+		fillPrimer(p, state, 192, 255);
 
 		Chunk start = new Chunk(world, p, chunkX, chunkY);
 		ResourceLocation file = new ResourceLocation(Dimensions.MODID, "libraria/" + biome.id + "/stairs/bottom/0");

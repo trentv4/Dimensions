@@ -21,16 +21,7 @@ public class LibrariaRoomSolid extends LibrariaRoom
 		IBlockState s = biome.fillerBlock.getDefaultState();
 		ChunkPrimer p = new ChunkPrimer();
 
-		for (int x = 0; x < 16; x++)
-		{
-			for (int z = 0; z < 16; z++)
-			{
-				for (int y = 0; y < 256; y++)
-				{
-					p.setBlockState(x, y, z, s);
-				}
-			}
-		}
+		fillPrimer(p, s, 0, 255);
 
 		return new Chunk(world, p, chunkX, chunkY);
 	}

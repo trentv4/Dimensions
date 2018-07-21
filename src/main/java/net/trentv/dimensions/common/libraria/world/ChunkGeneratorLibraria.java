@@ -34,11 +34,11 @@ public class ChunkGeneratorLibraria implements IChunkGenerator
 		LibrariaBiome chunkBiome = LibrariaBiome.fromInt(r.nextInt(4));
 		r.setSeed(roomSeed);
 
-		Chunk chunk = LibrariaRoom.getRoom(x % 11, z % 11, r, chunkBiome).build(world, x, z, r);
+		LibrariaRoom room = LibrariaRoom.getRoom(x % 11, z % 11, r, chunkBiome);
+		Chunk chunk = room.build(world, x, z, r);
 
-		chunk.generateSkylightMap();
-		chunk.enqueueRelightChecks();
-		chunk.checkLight();
+		chunk.resetRelightChecks();
+
 		return chunk;
 	}
 
