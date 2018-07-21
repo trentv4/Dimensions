@@ -1,5 +1,8 @@
 package net.trentv.dimensions.client;
 
+import java.util.Random;
+
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -16,11 +19,15 @@ import net.minecraftforge.client.event.EntityViewRenderEvent.FOVModifier;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.trentv.dimensions.common.CommonProxy;
 import net.trentv.dimensions.common.DimensionsObjects;
 import net.trentv.dimensions.common.block.BlockEnormousBook.BlockEnormousBookOpen;
+import net.trentv.dimensions.common.libraria.DimensionLibraria;
+import net.trentv.dimensions.common.libraria.LibrariaObjects;
+import net.trentv.dimensions.common.libraria.block.BlockLibrariaBookshelf;
 
 public class ClientProxy extends CommonProxy
 {
@@ -36,6 +43,37 @@ public class ClientProxy extends CommonProxy
 		private int prevLookTime = 0;
 		private int lookTime = 0;
 		private int MAX_LOOK_TIME = 60;
+
+		private char[] alphabet = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ',', ' ', '.' };
+
+		@SubscribeEvent
+		public void onRightClick(RightClickBlock event)
+		{
+			if (event.getEntityPlayer().dimension != DimensionLibraria.dimensionID)
+				return;
+			BlockPos pos = event.getPos();
+			Block block = event.getWorld().getBlockState(pos).getBlock();
+			// This needs work.
+			if (block instanceof BlockLibrariaBookshelf | block == LibrariaObjects.SMOLDERING_BOOKSHELF | block == LibrariaObjects.SOAKED_BOOKSHELF)
+			{
+				if (!event.getEntityPlayer().isSneaking())
+				{
+					Random random = new Random();
+
+					random.setSeed(pos.hashCode());
+					String s = "";
+					for (int i = 0; i < 300; i++)
+					{
+						s += alphabet[random.nextInt(alphabet.length)];
+					}
+					if (event.getWorld().isRemote)
+					{
+						Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBookOutput(s));
+					}
+					event.setCanceled(true);
+				}
+			}
+		}
 
 		@SubscribeEvent
 		public void onFOVModififier(FOVModifier event)
