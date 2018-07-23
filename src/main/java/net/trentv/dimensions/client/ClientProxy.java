@@ -3,9 +3,11 @@ package net.trentv.dimensions.client;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDoor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -150,6 +152,8 @@ public class ClientProxy extends CommonProxy
 			{
 				ModelLoader.setCustomModelResourceLocation(block, 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 			}
+
+			ModelLoader.setCustomStateMapper(LibrariaObjects.MARMOR_HIDDEN_DOOR, (new StateMap.Builder()).ignore(BlockDoor.POWERED).build());
 		}
 	}
 }

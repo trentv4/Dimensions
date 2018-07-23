@@ -2,6 +2,6 @@
     "parent": "randomdimensions:block/railing",
     "textures": {
         "railing": "randomdimensions:blocks/marmor",
-        "panel": "randomdimensions:blocks/marmor_tile"
+        "panel": "randomdimensions:blocks/marmor"
     }
 }

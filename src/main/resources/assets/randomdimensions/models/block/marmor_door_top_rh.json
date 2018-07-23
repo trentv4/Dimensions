@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top_rh",
+    "textures": {
+        "bottom": "randomdimensions:blocks/marmor_door_lower",
+        "top": "randomdimensions:blocks/marmor_door_upper"
+    }
+}

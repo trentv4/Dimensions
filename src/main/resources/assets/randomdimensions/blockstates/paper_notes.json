@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "randomdimensions:paper_notes" },
+            { "model": "randomdimensions:paper_notes", "y": 90 },
+            { "model": "randomdimensions:paper_notes", "y": 180 },
+            { "model": "randomdimensions:paper_notes", "y": 270 }
+        ]
+    }
+}
