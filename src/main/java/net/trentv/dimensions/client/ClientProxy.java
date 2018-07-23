@@ -153,7 +153,7 @@ public class ClientProxy extends CommonProxy
 				ModelLoader.setCustomModelResourceLocation(block, 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 			}
 
-			ModelLoader.setCustomStateMapper(LibrariaObjects.MARMOR_HIDDEN_DOOR, (new StateMap.Builder()).ignore(BlockDoor.POWERED).build());
+			ModelLoader.setCustomStateMapper(LibrariaObjects.MARMOR_DOOR, (new StateMap.Builder()).ignore(BlockDoor.POWERED).build());
 		}
 	}
 }

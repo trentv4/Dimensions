@@ -1,25 +1,34 @@
 tile.randomdimensions.enormous_book.name=Enormous Book
+
+tile.randomdimensions.marmor.name=Marmor
+tile.randomdimensions.marmor_tile.name=Marmor Tile
+tile.randomdimensions.marmor_tile_stairs.name=Marmor Tile Stairs
+tile.randomdimensions.marmor_pillar.name=Marmor Pillar
+tile.randomdimensions.marmor_bookshelf.name=Marmor Bookshelf
+tile.randomdimensions.marmor_railing.name=Marmor Railing
+tile.randomdimensions.marmor_slab.name=Marmor Slab
+tile.randomdimensions.marmor_lamp.name=Marmor Lamp
+tile.randomdimensions.marmor_lamp_broken.name=Broken Marmor Lamp
+tile.randomdimensions.paper_pile.name=Paper Pile
+tile.randomdimensions.paper_notes.name=Paper Notes
+item.randomdimensions.marmor_door.name=Marmor Door
+
+tile.randomdimensions.oak_railing.name=Oak Railing
+
 tile.randomdimensions.charred_bookshelf.name=Charred Bookshelf
 tile.randomdimensions.charred_planks.name=Charred Planks
 tile.randomdimensions.smoldering_bookshelf.name=Smoldering Bookshelf
 tile.randomdimensions.smoldering_planks.name=Smoldering Planks
-tile.randomdimensions.paper_pile.name=Paper Pile
 tile.randomdimensions.ash_pile.name=Ash Pile
-tile.randomdimensions.marmor.name=Marmor
-tile.randomdimensions.marmor_tile.name=Marmor Tile
-tile.randomdimensions.marmor_tile_stairs.name=Marmor Tile Stairs
-tile.randomdimensions.marmor_railing.name=Marmor Railing
-tile.randomdimensions.marmor_pillar.name=Marmor Pillar
-tile.randomdimensions.marmor_bookshelf.name=Marmor Bookshelf
-tile.randomdimensions.marmor_lamp.name=Marmor Lamp
-tile.randomdimensions.marmor_lamp_broken.name=Broken Marmor Lamp
-tile.randomdimensions.oak_railing.name=Oak Railing
+
 tile.randomdimensions.wet_planks.name=Wet Planks
 tile.randomdimensions.wet_bookshelf.name=Wet Bookshelf
 tile.randomdimensions.soaked_planks.name=Soaked Planks
 tile.randomdimensions.soaked_bookshelf.name=Soaked Bookshelf
 tile.randomdimensions.puddle.name=Puddle
+
 itemGroup.randomdimensions.libraria=Random Dimensions: Libraria
+
 
 
 tile.randomdimensions.enormous_book_smudged.name=Enormous Book
