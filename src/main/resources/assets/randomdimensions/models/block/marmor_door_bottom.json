@@ -1,5 +1,6 @@
 {
     "parent": "block/door_bottom",
+    "ambientocclusion": true,
     "textures": {
         "bottom": "randomdimensions:blocks/marmor_door_lower",
         "top": "randomdimensions:blocks/marmor_door_upper"
