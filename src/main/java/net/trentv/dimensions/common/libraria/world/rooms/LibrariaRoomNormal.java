@@ -14,13 +14,8 @@ import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
 
 public class LibrariaRoomNormal extends LibrariaRoom
 {
-	public LibrariaRoomNormal(LibrariaBiome biome)
-	{
-		super(biome);
-	}
-
 	@Override
-	public Chunk build(World world, int chunkX, int chunkY, Random r)
+	public Chunk build(LibrariaBiome biome, World world, int chunkX, int chunkY, Random r)
 	{
 		IBlockState state = biome.fillerBlock.getDefaultState();
 		ChunkPrimer p = new ChunkPrimer();

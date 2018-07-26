@@ -8,13 +8,8 @@ import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
 
 public class LibrariaRoomNull extends LibrariaRoom
 {
-	public LibrariaRoomNull(LibrariaBiome biome)
-	{
-		super(biome);
-	}
-
 	@Override
-	public Chunk build(World world, int chunkX, int chunkY, Random r)
+	public Chunk build(LibrariaBiome biome, World world, int chunkX, int chunkY, Random r)
 	{
 		return new Chunk(world, chunkX, chunkY);
 	}

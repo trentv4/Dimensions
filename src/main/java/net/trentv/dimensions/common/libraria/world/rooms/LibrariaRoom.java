@@ -10,14 +10,15 @@ import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
 
 public abstract class LibrariaRoom
 {
-	protected final LibrariaBiome biome;
+	private static final LibrariaRoomBook ROOM_BOOK = new LibrariaRoomBook();
+	private static final LibrariaRoomBridge ROOM_BRIDGE = new LibrariaRoomBridge();
+	private static final LibrariaRoomStair ROOM_STAIR = new LibrariaRoomStair();
+	private static final LibrariaRoomNormal ROOM_NORMAL = new LibrariaRoomNormal();
+	private static final LibrariaRoomPanel ROOM_PANEL = new LibrariaRoomPanel();
+	private static final LibrariaRoomSolid ROOM_SOLID = new LibrariaRoomSolid();
+	private static final LibrariaRoomNull ROOM_NULL = new LibrariaRoomNull();
 
-	public LibrariaRoom(LibrariaBiome biome)
-	{
-		this.biome = biome;
-	}
-
-	public static final LibrariaRoom getRoom(int x, int y, Random r, LibrariaBiome newBiome)
+	public static final LibrariaRoom getRoom(int x, int y, Random r)
 	{
 		// Okay, before I start, this may as well be a magic function.
 		// I can't figure out the right way to map an octagon with consistent
@@ -27,28 +28,28 @@ public abstract class LibrariaRoom
 		// https://i.imgur.com/0nhtEMY.png
 
 		if (x == 4 && y == 4)
-			return new LibrariaRoomBook(newBiome);
+			return ROOM_BOOK;
 
 		if (x == 4 & inside(y, 9, 10))
-			return new LibrariaRoomBridge(newBiome);
+			return ROOM_BRIDGE;
 		if (y == 4 & inside(x, 9, 10))
-			return new LibrariaRoomBridge(newBiome);
+			return ROOM_BRIDGE;
 
 		if ((x == 2 || x == 6) && (y == 2 || y == 6))
-			return new LibrariaRoomStair(newBiome);
+			return ROOM_STAIR;
 
 		if (inside(x, 3, 5) && inside(y, 0, 8))
-			return new LibrariaRoomNormal(newBiome);
+			return ROOM_NORMAL;
 		if (inside(y, 3, 5) && inside(x, 0, 8))
-			return new LibrariaRoomNormal(newBiome);
+			return ROOM_NORMAL;
 
 		if (Math.abs(x - 4) + Math.abs(y - 4) == 6)
-			return new LibrariaRoomPanel(newBiome);
+			return ROOM_PANEL;
 
 		if (inside(x, 1, 7) && inside(y, 1, 7))
-			return new LibrariaRoomSolid(newBiome);
+			return ROOM_SOLID;
 
-		return new LibrariaRoomNull(newBiome);
+		return ROOM_NULL;
 	}
 
 	protected static final boolean inside(int target, int lower, int higher)
@@ -70,5 +71,5 @@ public abstract class LibrariaRoom
 		}
 	}
 
-	public abstract Chunk build(World world, int chunkX, int chunkY, Random r);
+	public abstract Chunk build(LibrariaBiome biome, World world, int chunkX, int chunkY, Random r);
 }
