@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "randomdimensions:marmor_railing_fancy", "y": 90 },
+        "facing=south": { "model": "randomdimensions:marmor_railing_fancy", "y": 270 },
+        "facing=west":  { "model": "randomdimensions:marmor_railing_fancy" },
+        "facing=east":  { "model": "randomdimensions:marmor_railing_fancy", "y": 180 }
+    }
+}

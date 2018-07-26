@@ -30,14 +30,17 @@ public class LibrariaObjects
 
 	// Marmor biome
 	public static final Block MARMOR = build(ROCK, "marmor");
+	public static final Block MARMOR_CRACKED = build(ROCK, "marmor_cracked");
 	public static final Block MARMOR_TILE = build(ROCK, "marmor_tile");
 	public static final Block MARMOR_LAMP = build(ROCK, "marmor_lamp").setLightLevel(1);
 	public static final Block MARMOR_LAMP_BROKEN = build(ROCK, "marmor_lamp_broken");
+	public static final Block MARMOR_BOOKSHELF_EMPTY = build(ROCK, "marmor_bookshelf_empty");
 
 	public static final Block MARMOR_TILE_STAIRS = build(new BlockModStairs(MARMOR_TILE.getDefaultState()), "marmor_tile_stairs");
 	public static final Block MARMOR_PILLAR = build(new BlockModRotatedPillar(ROCK), "marmor_pillar");
 	public static final Block MARMOR_BOOKSHELF = build(new BlockLibrariaBookshelf(ROCK), "marmor_bookshelf");
 	public static final Block MARMOR_RAILING = build(new BlockRailing(ROCK), "marmor_railing");
+	public static final Block MARMOR_RAILING_FANCY = build(new BlockRailing(ROCK), "marmor_railing_fancy");
 	public static final Block MARMOR_SLAB = build(new BlockMarmorSlab.Half(), "marmor_slab");
 	public static final Block MARMOR_SLAB_FULL = build(new BlockMarmorSlab.Double(), "marmor_slab_full");
 
@@ -46,6 +49,7 @@ public class LibrariaObjects
 
 	public static final Block PAPER_PILE = build(new BlockPile(), "paper_pile");
 	public static final Block PAPER_NOTES = build(new BlockPile(), "paper_notes");
+	public static final Block DROPPED_BOOK = build(new BlockPile(), "dropped_book");
 
 	// Vanilla (wood) biome
 	public static final Block OAK_RAILING = build(new BlockRailing(WOOD), "oak_railing");
@@ -67,7 +71,7 @@ public class LibrariaObjects
 
 	public static void init()
 	{
-		DimensionsObjects.registerBlockAndItem(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR, MARMOR_BOOKSHELF, MARMOR_RAILING, MARMOR_LAMP, MARMOR_LAMP_BROKEN, MARMOR_SLAB);
+		DimensionsObjects.registerBlockAndItem(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR, MARMOR_BOOKSHELF, MARMOR_RAILING, MARMOR_LAMP, MARMOR_RAILING_FANCY, MARMOR_LAMP_BROKEN, MARMOR_SLAB, MARMOR_BOOKSHELF_EMPTY, MARMOR_CRACKED, DROPPED_BOOK);
 		DimensionsObjects.registerItem(ITEM_MARMOR_DOOR);
 		DimensionsObjects.registerBlock(MARMOR_SLAB_FULL, MARMOR_DOOR);
 

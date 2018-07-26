@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "randomdimensions:dropped_book" },
+            { "model": "randomdimensions:dropped_book", "y": 90 },
+            { "model": "randomdimensions:dropped_book", "y": 180 },
+            { "model": "randomdimensions:dropped_book", "y": 270 }
+        ]
+    }
+}

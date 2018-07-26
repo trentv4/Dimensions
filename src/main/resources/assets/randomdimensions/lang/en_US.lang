@@ -11,6 +11,10 @@ tile.randomdimensions.marmor_lamp.name=Marmor Lamp
 tile.randomdimensions.marmor_lamp_broken.name=Broken Marmor Lamp
 tile.randomdimensions.paper_pile.name=Paper Pile
 tile.randomdimensions.paper_notes.name=Paper Notes
+tile.randomdimensions.dropped_book.name=Dropped Book
+tile.randomdimensions.marmor_bookshelf_empty.name=Empty Bookshelf
+tile.randomdimensions.marmor_cracked.name=Cracked Marmor
+tile.randomdimensions.marmor_railing_fancy.name=Fancy Marmor Railing
 item.randomdimensions.marmor_door.name=Marmor Door
 
 tile.randomdimensions.oak_railing.name=Oak Railing

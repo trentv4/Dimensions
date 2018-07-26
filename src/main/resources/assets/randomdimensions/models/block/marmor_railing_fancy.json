@@ -1,8 +1,10 @@
 {
 	"parent": "block/block",
 	"textures": {
-		"particle": "#panel"
-	},
+        "railing": "randomdimensions:blocks/marmor",
+        "panel": "randomdimensions:blocks/marmor",
+        "particle": "randomdimensions:blocks/marmor"
+    },
 	"elements": [
 		{
 			"from": [0, 14, 0],
@@ -29,6 +31,18 @@
 			}
 		},
 		{
+			"from": [1, 0, 7],
+			"to": [3, 14, 9],
+			"faces": {
+				"north": {"uv": [13, 2, 15, 16], "texture": "#railing", "cullface": "north"},
+				"east": {"uv": [7, 2, 9, 16], "texture": "#railing"},
+				"south": {"uv": [1, 2, 3, 16], "texture": "#railing"},
+				"west": {"uv": [7, 2, 9, 16], "texture": "#railing", "cullface": "west"},
+				"up": {"uv": [1, 7, 3, 9], "texture": "#railing", "cullface": "up"},
+				"down": {"uv": [1, 7, 3, 9], "texture": "#railing", "cullface": "down"}
+			}
+		},
+		{
 			"from": [0, 0, 14],
 			"to": [4, 14, 16],
 			"faces": {
@@ -38,15 +52,6 @@
 				"west": {"uv": [14, 2, 16, 16], "texture": "#railing", "cullface": "west"},
 				"up": {"uv": [0, 14, 4, 16], "texture": "#railing", "cullface": "up"},
 				"down": {"uv": [0, 0, 4, 2], "texture": "#railing", "cullface": "down"}
-			}
-		},
-		{
-			"from": [1, 0, 2],
-			"to": [3, 14, 14],
-			"faces": {
-				"east": {"uv": [2, 2, 14, 16], "texture": "#panel"},
-				"west": {"uv": [2, 2, 14, 16], "texture": "#panel"},
-				"down": {"uv": [0, 0, 2, 12], "texture": "#particle"}
 			}
 		}
 	]

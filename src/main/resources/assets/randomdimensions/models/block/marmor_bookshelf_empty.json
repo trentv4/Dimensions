@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "randomdimensions:blocks/marmor",
+        "side": "randomdimensions:blocks/marmor_bookshelf_empty"
+    }
+}
