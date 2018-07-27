@@ -21,9 +21,17 @@ public class LibrariaRoomNormal extends LibrariaRoom
 
 		p.buildChunk(world, chunkX, chunkY);
 
+		int x = chunkX % 11;
+		int y = chunkY % 11;
+
 		for (int i = 96; i <= 176; i += 16)
 		{
-			p.addRoom(world, "libraria/" + biome.id + "/room/" + r.nextInt(7) + "_fresh", i);
+			if (i == 128 & ((x == 4 & (y == 0 | y == 8)) | y == 4 & (x == 0 | x == 8)))
+			{
+				p.addRoom(world, "libraria/" + biome.id + "/entrance", i);
+				continue;
+			}
+			p.addRoom(world, "libraria/" + biome.id + "/room/" + r.nextInt(4) + "_fresh", i);
 		}
 
 		return p.getChunk();
