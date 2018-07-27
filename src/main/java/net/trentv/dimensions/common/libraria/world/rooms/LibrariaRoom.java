@@ -2,10 +2,8 @@ package net.trentv.dimensions.common.libraria.world.rooms;
 
 import java.util.Random;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.ChunkPrimer;
 import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
 
 public abstract class LibrariaRoom
@@ -55,20 +53,6 @@ public abstract class LibrariaRoom
 	protected static final boolean inside(int target, int lower, int higher)
 	{
 		return (target >= lower & target <= higher);
-	}
-
-	protected static final void fillPrimer(ChunkPrimer primer, IBlockState state, int start, int end)
-	{
-		for (int x = 0; x < 16; x++)
-		{
-			for (int z = 0; z < 16; z++)
-			{
-				for (int y = start; y <= end; y++)
-				{
-					primer.setBlockState(x, y, z, state);
-				}
-			}
-		}
 	}
 
 	public abstract Chunk build(LibrariaBiome biome, World world, int chunkX, int chunkY, Random r);

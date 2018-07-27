@@ -5,7 +5,7 @@ import java.util.Random;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.ChunkPrimer;
+import net.trentv.dimensions.common.ChunkBuilder;
 import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
 
 public class LibrariaRoomPanel extends LibrariaRoom
@@ -14,7 +14,7 @@ public class LibrariaRoomPanel extends LibrariaRoom
 	public Chunk build(LibrariaBiome biome, World world, int chunkX, int chunkY, Random r)
 	{
 		IBlockState s = biome.fillerBlock.getDefaultState();
-		ChunkPrimer p = new ChunkPrimer();
+		ChunkBuilder p = new ChunkBuilder();
 
 		int modX = chunkX % 11;
 		int modY = chunkY % 11;
@@ -39,6 +39,6 @@ public class LibrariaRoomPanel extends LibrariaRoom
 				}
 			}
 		}
-		return new Chunk(world, p, chunkX, chunkY);
+		return p.buildChunk(world, chunkX, chunkY);
 	}
 }
