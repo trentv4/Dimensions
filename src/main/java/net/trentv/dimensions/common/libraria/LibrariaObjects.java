@@ -16,6 +16,7 @@ import net.trentv.dimensions.common.DimensionsObjects;
 import net.trentv.dimensions.common.libraria.block.BlockLibrariaBookshelf;
 import net.trentv.dimensions.common.libraria.block.BlockMarmorDoor;
 import net.trentv.dimensions.common.libraria.block.BlockMarmorSlab;
+import net.trentv.dimensions.common.libraria.block.BlockMarmorTeleportBook;
 import net.trentv.dimensions.common.libraria.block.BlockModRotatedPillar;
 import net.trentv.dimensions.common.libraria.block.BlockModStairs;
 import net.trentv.dimensions.common.libraria.block.BlockParticleDripper;
@@ -43,6 +44,7 @@ public class LibrariaObjects
 	public static final Block MARMOR_RAILING_FANCY = build(new BlockRailing(ROCK), "marmor_railing_fancy");
 	public static final Block MARMOR_SLAB = build(new BlockMarmorSlab.Half(), "marmor_slab");
 	public static final Block MARMOR_SLAB_FULL = build(new BlockMarmorSlab.Double(), "marmor_slab_full");
+	public static final Block MARMOR_TELEPORT_BOOK = build(new BlockMarmorTeleportBook(ROCK), "marmor_teleport_book");
 
 	public static final Block MARMOR_DOOR = build(new BlockMarmorDoor(ROCK), "marmor_door");
 	public static final Item ITEM_MARMOR_DOOR = new ItemDoor(MARMOR_DOOR).setUnlocalizedName("randomdimensions.marmor_door").setRegistryName(Dimensions.MODID, "marmor_door_item").setCreativeTab(LIBRARIA_CREATIVE_TAB);
@@ -71,7 +73,7 @@ public class LibrariaObjects
 
 	public static void init()
 	{
-		DimensionsObjects.registerBlockAndItem(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_PILLAR, MARMOR_BOOKSHELF, MARMOR_RAILING, MARMOR_LAMP, MARMOR_RAILING_FANCY, MARMOR_LAMP_BROKEN, MARMOR_SLAB, MARMOR_BOOKSHELF_EMPTY, MARMOR_CRACKED, DROPPED_BOOK);
+		DimensionsObjects.registerBlockAndItem(MARMOR, MARMOR_TILE, MARMOR_TILE_STAIRS, MARMOR_TELEPORT_BOOK, MARMOR_PILLAR, MARMOR_BOOKSHELF, MARMOR_RAILING, MARMOR_LAMP, MARMOR_RAILING_FANCY, MARMOR_LAMP_BROKEN, MARMOR_SLAB, MARMOR_BOOKSHELF_EMPTY, MARMOR_CRACKED, DROPPED_BOOK);
 		DimensionsObjects.registerItem(ITEM_MARMOR_DOOR);
 		DimensionsObjects.registerBlock(MARMOR_SLAB_FULL, MARMOR_DOOR);
 
