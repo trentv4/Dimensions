@@ -17,9 +17,8 @@ public class LibrariaRoomBook extends LibrariaRoom
 		ChunkBuilder p = new ChunkBuilder();
 
 		p.fill(state, 0, 95);
-		p.fill(state, 192, 255);
+		p.fill(state, 174, 255);
 
-		// TODO: stub
-		return new Chunk(world, chunkX, chunkY);
+		return p.buildChunk(world, chunkX, chunkY);
 	}
 }

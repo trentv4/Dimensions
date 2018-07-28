@@ -26,7 +26,7 @@ public class TeleporterAcceptAll extends Teleporter
 			if (player.dimension == DimensionSmudgedCity.dimensionID)
 				position = new BlockPos(0, 128, 0);
 			if (player.dimension == DimensionLibraria.dimensionID)
-				position = new BlockPos(72, 98, 72);
+				position = new BlockPos(88, 97, 88);
 
 			player.setPosition(position.getX(), position.getY(), position.getZ());
 		}

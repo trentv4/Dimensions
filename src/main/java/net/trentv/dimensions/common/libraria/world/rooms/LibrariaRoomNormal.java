@@ -17,16 +17,16 @@ public class LibrariaRoomNormal extends LibrariaRoom
 		ChunkBuilder p = new ChunkBuilder();
 
 		p.fill(state, 0, 95);
-		p.fill(state, 192, 255);
+		p.fill(state, 174, 255);
 
 		p.buildChunk(world, chunkX, chunkY);
 
 		int x = chunkX % 11;
 		int y = chunkY % 11;
 
-		for (int i = 96; i <= 176; i += 16)
+		for (int i = 96; i < 176; i += 16)
 		{
-			if (i == 128 & ((x == 4 & (y == 0 | y == 8)) | y == 4 & (x == 0 | x == 8)))
+			if (i == 128 && ((x == 5 && (y == 1 || y == 9)) || y == 5 && (x == 1 || x == 9)))
 			{
 				p.addRoom(world, "libraria/" + biome.id + "/entrance", i);
 				continue;

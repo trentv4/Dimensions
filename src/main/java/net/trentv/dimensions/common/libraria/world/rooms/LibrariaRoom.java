@@ -23,28 +23,28 @@ public abstract class LibrariaRoom
 		// rooms. If you do know, ping me! Maybe measuring distance...
 
 		// This really is required viewing to understand the following.
-		// https://i.imgur.com/0nhtEMY.png
+		// https://i.imgur.com/Ghwwn2Z.png
 
-		if (x == 4 && y == 4)
+		if (inside(x, 4, 6) && inside(y, 4, 6))
 			return ROOM_BOOK;
 
-		if (x == 4 & inside(y, 9, 10))
+		if (x == 5 && (y == 0 || y == 10))
 			return ROOM_BRIDGE;
-		if (y == 4 & inside(x, 9, 10))
+		if (y == 5 && (x == 0 || x == 10))
 			return ROOM_BRIDGE;
 
-		if ((x == 2 || x == 6) && (y == 2 || y == 6))
+		if ((x == 3 || x == 7) && (y == 3 || y == 7))
 			return ROOM_STAIR;
 
-		if (inside(x, 3, 5) && inside(y, 0, 8))
+		if (inside(x, 4, 6) && inside(y, 1, 9))
 			return ROOM_NORMAL;
-		if (inside(y, 3, 5) && inside(x, 0, 8))
+		if (inside(y, 4, 6) && inside(x, 1, 9))
 			return ROOM_NORMAL;
 
-		if (Math.abs(x - 4) + Math.abs(y - 4) == 6)
+		if (Math.abs(x - 5) + Math.abs(y - 5) == 6)
 			return ROOM_PANEL;
 
-		if (inside(x, 1, 7) && inside(y, 1, 7))
+		if (inside(x, 2, 8) && inside(y, 2, 8))
 			return ROOM_SOLID;
 
 		return ROOM_NULL;

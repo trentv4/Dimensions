@@ -19,7 +19,7 @@ public class LibrariaRoomPanel extends LibrariaRoom
 		int modX = chunkX % 11;
 		int modY = chunkY % 11;
 
-		if ((inside(modX, 0, 2) & inside(modY, 0, 2)) | inside(modX, 6, 8) & inside(modY, 6, 8))
+		if ((inside(modX, 1, 3) & inside(modY, 1, 3)) | inside(modX, 7, 9) & inside(modY, 7, 9))
 		{
 			for (int x = 0; x < 16; x++)
 			{
@@ -29,7 +29,7 @@ public class LibrariaRoomPanel extends LibrariaRoom
 				}
 			}
 		}
-		if ((inside(modX, 0, 2) & inside(modY, 6, 8)) | (inside(modX, 6, 8) & inside(modY, 0, 2)))
+		if ((inside(modX, 1, 3) & inside(modY, 7, 9)) | (inside(modX, 7, 9) & inside(modY, 1, 3)))
 		{
 			for (int x = 0; x < 16; x++)
 			{

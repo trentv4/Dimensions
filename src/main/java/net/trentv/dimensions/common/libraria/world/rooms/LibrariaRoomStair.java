@@ -17,18 +17,18 @@ public class LibrariaRoomStair extends LibrariaRoom
 		ChunkBuilder p = new ChunkBuilder();
 
 		p.fill(state, 0, 95);
-		p.fill(state, 192, 255);
+		p.fill(state, 174, 255);
 
 		p.buildChunk(world, chunkX, chunkY);
 
 		p.addRoom(world, "libraria/" + biome.id + "/stairs/bottom/0", 96);
 
-		for (int i = 112; i <= 160; i += 16)
+		for (int i = 112; i < 160; i += 16)
 		{
 			p.addRoom(world, "libraria/" + biome.id + "/stairs/middle/0", i);
 		}
 
-		p.addRoom(world, "libraria/" + biome.id + "/stairs/top/0", 176);
+		p.addRoom(world, "libraria/" + biome.id + "/stairs/top/0", 160);
 
 		return p.getChunk();
 	}
