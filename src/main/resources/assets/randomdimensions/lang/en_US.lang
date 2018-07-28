@@ -16,6 +16,7 @@ tile.randomdimensions.marmor_bookshelf_empty.name=Empty Bookshelf
 tile.randomdimensions.marmor_cracked.name=Cracked Marmor
 tile.randomdimensions.marmor_railing_fancy.name=Fancy Marmor Railing
 item.randomdimensions.marmor_door.name=Marmor Door
+item.randomdimensions.marmor_teleport_book.name=Teleportation Book Pedestal
 
 tile.randomdimensions.oak_railing.name=Oak Railing
 

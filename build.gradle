@@ -37,7 +37,7 @@ processResources
 
 // Below here is what you probably want to change.
 
-version = "1.0"
+version = "0.1-snapshot"
 group= "net.trentv.dimensions"
 archivesBaseName = "dimensions"
 
