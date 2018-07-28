@@ -10,6 +10,9 @@ import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
 
 public class LibrariaRoomNormal extends LibrariaRoom
 {
+	// todo determine automatically
+	public static final int ROOM_COUNT = 7;
+
 	@Override
 	public Chunk build(LibrariaBiome biome, World world, int chunkX, int chunkY, Random r)
 	{
@@ -46,7 +49,7 @@ public class LibrariaRoomNormal extends LibrariaRoom
 					break;
 			}
 
-			p.addRoom(world, "libraria/" + biome.id + "/room/" + r.nextInt(7) + roomQuality, i);
+			p.addRoom(world, "libraria/" + biome.id + "/room/" + r.nextInt(ROOM_COUNT) + roomQuality, i);
 		}
 
 		return p.getChunk();

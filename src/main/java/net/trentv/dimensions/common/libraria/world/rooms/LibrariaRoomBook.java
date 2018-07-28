@@ -17,8 +17,35 @@ public class LibrariaRoomBook extends LibrariaRoom
 		ChunkBuilder p = new ChunkBuilder();
 
 		p.fill(state, 0, 95);
-		p.fill(state, 174, 255);
+		p.fill(state, 176, 255);
 
-		return p.buildChunk(world, chunkX, chunkY);
+		p.buildChunk(world, chunkX, chunkY);
+
+		int x = chunkX % 11;
+		int y = chunkY % 11;
+
+		// Layers 0 and 1
+		if (x == 5 && y == 5)
+		{
+			p.addRoom(world, "libraria/" + biome.id + "/stairs/bottom/0", 96);
+			p.addRoom(world, "libraria/" + biome.id + "/antechamber", 112);
+		}
+		else
+		{
+			for (int i = 96; i < 128; i += 16)
+			{
+				p.addRoom(world, "libraria/" + biome.id + "/room/" + r.nextInt(LibrariaRoomNormal.ROOM_COUNT) + "f", i);
+			}
+		}
+
+		for (int i = 128; i < 176; i += 16)
+		{
+			if (x == 5 && y == 5 && i == 144)
+				;// p.addRoom(world, "libraria/" + biome.id + "/bossroomtemp", i);
+			else
+				p.addRoom(world, "libraria/" + biome.id + "/bossroomtemp", i);
+		}
+
+		return p.getChunk();
 	}
 }
