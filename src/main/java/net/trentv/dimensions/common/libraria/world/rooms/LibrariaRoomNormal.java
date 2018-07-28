@@ -31,7 +31,22 @@ public class LibrariaRoomNormal extends LibrariaRoom
 				p.addRoom(world, "libraria/" + biome.id + "/entrance", i);
 				continue;
 			}
-			p.addRoom(world, "libraria/" + biome.id + "/room/" + r.nextInt(4) + "_fresh", i);
+
+			String roomQuality = "";
+			switch (r.nextInt(1))
+			{
+				case 0:
+					roomQuality = "f";
+					break;
+				case 1:
+					roomQuality = "b";
+					break;
+				case 2:
+					roomQuality = "d";
+					break;
+			}
+
+			p.addRoom(world, "libraria/" + biome.id + "/room/" + r.nextInt(7) + roomQuality, i);
 		}
 
 		return p.getChunk();
