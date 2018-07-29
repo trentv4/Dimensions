@@ -64,9 +64,19 @@ public class ClientProxy extends CommonProxy
 
 					random.setSeed(pos.hashCode());
 					String s = "";
-					for (int i = 0; i < 300; i++)
+					if (random.nextInt(100) == 0)
 					{
-						s += alphabet[random.nextInt(alphabet.length)];
+						s = "WHAT WAS WILL BE WHAT WILL BE WAS GRAVITY IS DESIRE TIME IS SIGHT THE TRINE THE QUINE "
+								+ "THE TRINE THE LOOP EVERYTHING AND NOTHING THE END IN THE BEGINNING WHAT WAS WILL "
+								+ "BE WHAT WILL BE WAS GRAVITY IS DESIRE TIME IS SIGHT THE TRINE THE QUINE THE TRINE "
+								+ "THE LOOP EVERYTHING AND NOTHING THE WORM LOVES US";
+					}
+					else
+					{
+						for (int i = 0; i < 300; i++)
+						{
+							s += alphabet[random.nextInt(alphabet.length)];
+						}
 					}
 					if (event.getWorld().isRemote)
 					{
