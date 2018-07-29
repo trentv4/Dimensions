@@ -67,4 +67,14 @@ public class BlockPile extends Block
 	{
 		return BlockRenderLayer.CUTOUT;
 	}
+
+	public static class BlockPileTranslucent extends BlockPile
+	{
+		@Override
+		@SideOnly(Side.CLIENT)
+		public BlockRenderLayer getBlockLayer()
+		{
+			return BlockRenderLayer.TRANSLUCENT;
+		}
+	}
 }

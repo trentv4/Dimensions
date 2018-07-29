@@ -5,6 +5,8 @@ import static net.minecraft.block.material.Material.WOOD;
 import static net.minecraft.util.EnumParticleTypes.BLOCK_DUST;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRotatedPillar;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -17,11 +19,9 @@ import net.trentv.dimensions.common.libraria.block.BlockLibrariaBookshelf;
 import net.trentv.dimensions.common.libraria.block.BlockMarmorDoor;
 import net.trentv.dimensions.common.libraria.block.BlockMarmorSlab;
 import net.trentv.dimensions.common.libraria.block.BlockMarmorTeleportBook;
-import net.trentv.dimensions.common.libraria.block.BlockModRotatedPillar;
-import net.trentv.dimensions.common.libraria.block.BlockModStairs;
 import net.trentv.dimensions.common.libraria.block.BlockParticleDripper;
 import net.trentv.dimensions.common.libraria.block.BlockPile;
-import net.trentv.dimensions.common.libraria.block.BlockPileTranslucent;
+import net.trentv.dimensions.common.libraria.block.BlockPile.BlockPileTranslucent;
 import net.trentv.dimensions.common.libraria.block.BlockRailing;
 import net.trentv.dimensions.common.libraria.block.BlockSmoldering;
 
@@ -37,8 +37,8 @@ public class LibrariaObjects
 	public static final Block MARMOR_LAMP_BROKEN = build(ROCK, "marmor_lamp_broken");
 	public static final Block MARMOR_BOOKSHELF_EMPTY = build(ROCK, "marmor_bookshelf_empty");
 
-	public static final Block MARMOR_TILE_STAIRS = build(new BlockModStairs(MARMOR_TILE.getDefaultState()), "marmor_tile_stairs");
-	public static final Block MARMOR_PILLAR = build(new BlockModRotatedPillar(ROCK), "marmor_pillar");
+	public static final Block MARMOR_TILE_STAIRS = build(new BlockStairs(MARMOR_TILE.getDefaultState()), "marmor_tile_stairs");
+	public static final Block MARMOR_PILLAR = build(new BlockRotatedPillar(ROCK), "marmor_pillar");
 	public static final Block MARMOR_BOOKSHELF = build(new BlockLibrariaBookshelf(ROCK), "marmor_bookshelf");
 	public static final Block MARMOR_RAILING = build(new BlockRailing(ROCK), "marmor_railing");
 	public static final Block MARMOR_RAILING_FANCY = build(new BlockRailing(ROCK), "marmor_railing_fancy");
