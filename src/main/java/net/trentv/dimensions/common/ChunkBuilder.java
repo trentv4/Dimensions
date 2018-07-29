@@ -39,15 +39,20 @@ public class ChunkBuilder extends ChunkPrimer
 		return chunk;
 	}
 
-	public void addChunkTemplate(World world, ResourceLocation path, BlockPos pos)
+	public void addChunkTemplate(World world, ResourceLocation path, BlockPos pos, int rotation)
 	{
 		ChunkTemplate template = ChunkTemplate.getChunkTemplate(world, path);
-		template.addAllToChunk(chunk, pos);
+		template.addAllToChunk(chunk, pos, rotation);
 	}
 
 	public void addRoom(World world, String path, int y)
 	{
-		addChunkTemplate(world, new ResourceLocation(Dimensions.MODID, path), new BlockPos(0, y, 0));
+		addChunkTemplate(world, new ResourceLocation(Dimensions.MODID, path), new BlockPos(0, y, 0), 0);
+	}
+
+	public void addRoom(World world, String path, int y, int rotation)
+	{
+		addChunkTemplate(world, new ResourceLocation(Dimensions.MODID, path), new BlockPos(0, y, 0), rotation);
 	}
 
 	@Nullable
