@@ -211,7 +211,8 @@ public class BlockEnormousBook extends BlockHorizontal
 		@Override
 		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 		{
-			return tryClose(world, pos, state);
+			tryClose(world, pos, state);
+			return true;
 		}
 
 		@Override
@@ -262,7 +263,7 @@ public class BlockEnormousBook extends BlockHorizontal
 			return world.getBlockState(otherPos) == state.withProperty(SIDE, side.getOpposite());
 		}
 
-		public boolean tryClose(World world, BlockPos pos, IBlockState state)
+		public void tryClose(World world, BlockPos pos, IBlockState state)
 		{
 			EnumFacing facing = state.getValue(FACING);
 			EnumHorizontalRelativeFacing side = state.getValue(SIDE);
@@ -310,8 +311,6 @@ public class BlockEnormousBook extends BlockHorizontal
 					}
 				}
 			}
-
-			return false;
 		}
 
 		public void checkAndDropBlock(World world, BlockPos pos, IBlockState state)
