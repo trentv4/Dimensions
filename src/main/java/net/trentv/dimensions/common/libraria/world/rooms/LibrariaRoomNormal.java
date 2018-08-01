@@ -11,7 +11,7 @@ import net.trentv.dimensions.common.libraria.DimensionLibraria.LibrariaBiome;
 public class LibrariaRoomNormal extends LibrariaRoom
 {
 	// todo determine automatically
-	public static final int ROOM_COUNT = 7;
+	public static final int ROOM_COUNT = 10;
 
 	@Override
 	public Chunk build(LibrariaBiome biome, World world, int chunkX, int chunkY, Random r)
